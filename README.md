@@ -72,7 +72,7 @@ Accelerating things a little bit, we are going to re-use this public repository 
 * And then __Actions__ 
 > Equivalent URL: `https://github.com/<username>/shr-private/settings/actions`
 
-* On then bottom of the page, click __`Add Runner`__
+* On the bottom of the page, click __`Add Runner`__
 > Equivalent URL: `https://github.com/<username>/shr-private/settings/actions/add-new-runner`
 
 * For __Operating System__ 
