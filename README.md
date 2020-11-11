@@ -36,7 +36,7 @@ For this tutorial, the following will be required:
 
 
 ## Introduction
-For this tutorial, we are going to use the [GitHub's Self-hosted-runners][gh-shr-url] to build a project on a local building machine while __GitHub Actions__ orchestrates the entire DevOps workflow for us.
+For this tutorial, we are going to use the [GitHub's Self-hosted runners][gh-shr-url] to build a project on a local building machine while __GitHub Actions__ orchestrates the entire DevOps workflow for us.
 
 On this DevOps workflow, we are going to create one [__private__][gh-shr-priv-url] repository hosted at __GitHub__ containing our project. 
 
@@ -44,7 +44,7 @@ The private repository will have a __`production`__ branch in which __only__ the
 
 A __Developer__ clones the repository with the __`production`__ branch and then create a feature branch named __`dev-<feature-name||bug-fix>`__ containing a new feature or a bug fix. Then he pushes the branch to the _Origin_. This will trigger a __GitHub Action__ to build the project using the __IAR Build Tools__ in a __Self-hosted runner__.
 
-This way we can make sure that a newly developed feature will not break the build. This scheme will improve the project's quality, and it will help the __Project Manager__ in the validation process while deciding which code changes are acceptable _and_ if it does not integrate well to the __`production`-grade__ code base.
+This way we can make sure that a newly developed feature will not break the build. This scheme will improve the project's quality, and it will help the __Project Manager__ in the validation process while deciding which code changes are acceptable _and_ if it does integrate well to the __`production`-grade__ code base.
 
 ![](images/bx-shr-devops-flow.png)
 
