@@ -25,6 +25,9 @@ For this tutorial, the following will be required:
     - A __Developer__
     - A __Project Manager__ (who, for the current purposes, can temporarily assume the role of the __Developer__)
 
+### Additional Resources
+If you are new to CI/CD, Docker, Jenkins and Self-Hosted Runners or just want to learn more and see the IAR tools in action, you can find an useful selection of recorded webinars about automated building and testing in Linux-based environments [here!][iar-bx-url]
+
 ## Table of Contents
 * [Introduction](#introduction)
 * [Prepare the repository](#prepare-the-repository)
