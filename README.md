@@ -15,7 +15,7 @@ For this tutorial, the following will be required:
    - [Git for Windows](https://git-scm.com/download/win) (includes _bash_)
  
 * __Build-Server__: a __Ubuntu__ v18.04+ with the following software installed:
-    - [__IAR build tools for Arm 8.50.6__](https://www.iar.com/about-us/contact) (referred as `BXARM`)
+    - [__IAR build tools for Arm 8.50.6__](https://www.iar.com/about/contact/sales/) (referred as `BXARM`)
  
 * [__IAR License Server__][iar-lms2-url] already __up__, loaded with __activated__ `BXARM` licenses and __reachable__ from the __Build-Server__
 
