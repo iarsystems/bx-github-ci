@@ -81,15 +81,18 @@ The __Project Manager__ should access the __Build-Server__ to perform the follow
 
 ### Install the IAR Build Tools for Linux
 Install the IAR Build Tools for Linux.
-:warning: Follow the instructions and recommendations of the product's User Guide that comes with the product.
 
-Additionally, it is possible to add the IAR Build Tools directories containing the executables on the search `PATH`, so they can be executed from anywhere.
-For example, update `bx<arch>` in the snippet bellow and paste to the `$HOME/.profile` (or the `$HOME/.bashrc`):
+>:warning: Follow the instructions and recommendations of the product's User Guide that comes with the product.
+
+Additionally, it is possible to add the __IAR Build Tools__ directories containing the executables on the search `PATH`, so they can be executed from anywhere.
+For example, paste the snippet below to the user's `$HOME/.profile` (or the `$HOME/.bashrc`) file:
 > ```sh
 > if [ -d "/opt/iarsystems/bx<arch>" ]; then
 >   PATH="/opt/iarsystems/bx<arch>/<arch>/bin:/opt/iarsystems/bx<arch>/common/bin:$PATH"
 > fi
 > ```
+
+Then update the `bx<arch>` in all the paths so they match the product you are using.
 
 ### Configure the GitHub Actions runner
 Then follow the GitHub's instructions for...
