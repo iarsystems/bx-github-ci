@@ -79,31 +79,17 @@ Accelerating things a little bit, we are going to re-use this public repository 
 ## Setup the Self-hosted runner
 The __Project Manager__ should access the __Build-Server__ to perform the following setup:
 
-### Install the `BXARM` build tools
-Install the IAR Build Tools for Arm 8.50.6 (`BXARM`) on the __Build-Server__ as follows:
-```sh 
-# Setup the BXARM with dpkg 
-$ sudo dpkg --install <path-to>/bxarm-8.50.6.deb
+### Install the IAR Build Tools for Linux
+Install the IAR Build Tools for Linux.
+:warning: Follow the instructions and recommendations of the product's User Guide that comes with the product.
 
-# Initialize the IAR License Manager on the Build-Server
-$ sudo /opt/iarsystems/bxarm-8.50.6/common/bin/lightlicensemanager init
-
-# Setup the license on the Build-Server
-$ /opt/iarsystems/bxarm-8.50.6/common/bin/lightlicensemanager setup -s <IAR.License.Server.IP.address> 
-```
-> __Notes__
-> * Additionally, it is possible to add the `BXARM` directories containing the executables on the search `PATH`, so they can be executed from anywhere.
->
-> For example:
+Additionally, it is possible to add the IAR Build Tools directories containing the executables on the search `PATH`, so they can be executed from anywhere.
+For example, update `bx<arch>` in the snippet bellow and paste to the `$HOME/.profile` (or the `$HOME/.bashrc`):
 > ```sh
-> # Append it to the $HOME/.profile (or the $HOME/.bashrc) file
->
-> # If BXARM 8.50.6 is installed, set PATH so it includes its bin folders
-> if [ -d "/opt/iarsystems/bxarm-8.50.6" ]; then
->   PATH="/opt/iarsystems/bxarm-8.50.6/arm/bin:/opt/iarsystems/bxarm-8.50.6/common/bin:$PATH"
+> if [ -d "/opt/iarsystems/bx<arch>" ]; then
+>   PATH="/opt/iarsystems/bx<arch>/<arch>/bin:/opt/iarsystems/bx<arch>/common/bin:$PATH"
 > fi
 > ```
-> * Alternatively, it is possible to use the __IAR Build Tools__ directly from a __Docker Container__ in a transparent manner. Jump to our [Docker images for IAR Build tools on Linux hosts][gh-bxarm-docker-url] tutorial for further details. 
 
 ### Configure the GitHub Actions runner
 Then follow the GitHub's instructions for...
