@@ -244,11 +244,12 @@ In short, in this tutorial we went through one of the many ways that the [IAR Bu
    
 The GitHub Actions provides a great and scalable way to manage automation tasks for building, testing and deploying software. 
    
-For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and the [IAR Build Tools official page][iar-bx-url].
+For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and the [IAR Build Tools official page][iar-bx-url] and the [Weekly Breakpoint blog][iar-bkpt-url].
 
 <!-- links -->
 [iar-bx-url]: https://www.iar.com/bx
 [iar-lms2-url]: https://links.iar.com/lms2-server
+[iar-bkpt-url]: https://www.iar.com/about/news-and-events/the-weekly-breakpoint-blog/
 
 [gh-join-url]: https://github.com/join
 [gh-azure-url]: https://azure.microsoft.com/en-us/products/github/
