@@ -1,13 +1,33 @@
-# Tutorial: Self-hosted runners for the IAR Build Tools on Linux hosts
+<img align="right" src="docs/pictures/github-logo.png" />
 
-### Objectives
-This tutorial provides a simplified example containing general setup guidelines on how a __GitHub Actions self-hosted runner__ can be used in a Continuous Integration (CI/CD) DevOps workflow when building projects with the [__IAR Build Tools__ on Linux hosts][iar-bx-url]. 
+# Tutorial<br/>
+IAR Build tools in a GitHub CI 
 
-> __Notes__
-> * For more tutorials, stay tuned on our [__IAR Systems__ page on GitHub][gh-iar-url].
-> * If you have questions, you can always refer to the [__bx-self-hosted-runners wiki__][repo-wiki-url], or [here][repo-old-issue-url] for earlier questions. In case you have a new question, post it [here][repo-new-issue-url].
 
-### Requirements
+This tutorial provides a simple example with general guidelines on how to setup a CI (Continuous Integration) workflow with [IAR Build Tools for Linux][iar-bx-url] alongside [GitHub](https://github.com).
+
+Each of the __IAR Build Tools__ packages requires its specific license. Please feel free to [__contact us__](https://iar.com/about/contact) if you would like to learn how to get access to them.
+
+If you want to be notified in your GitHub inbox about updates to this tutorial, you can start __watching__ this repository. You can customize which types of notification you want to get. Read more about [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications) and how to [customize](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications#customizing-notifications-and-subscriptions) them.
+
+If you end up with a question specifically related to [this tutorial](https://github.com/iarsystems/bx-github-ci), you might be interested in verifying if it was already answered from [earlier questions][repo-old-issue-url]. Or, [ask a new question][repo-new-issue-url] if you could not find any answer for your question.
+
+
+
+## Introduction
+For this tutorial, we are going to use the [GitHub's Self-hosted runners][gh-shr-url] to build a project on a local building machine while __GitHub Actions__ orchestrates the entire DevOps workflow for us.
+
+On this DevOps workflow, we are going to create one [__private__][gh-shr-priv-url] repository hosted at __GitHub__ containing our project. 
+
+The private repository will have a __`production`__ branch in which __only__ the __Project Manager__ should have the authority to approve code changes.
+
+A __Developer__ clones the repository with the __`production`__ branch and then create a feature branch named __`dev-<feature-name||bug-fix>`__ containing a new feature or a bug fix. Then he pushes the branch to the _Origin_. This will trigger a __GitHub Action__ to build the project using the __IAR Build Tools__ in a __Self-hosted runner__.
+
+This way we can make sure that a newly developed feature will not break the build. This scheme will improve the project's quality, and it will help the __Project Manager__ in the validation process while deciding which code changes are acceptable _and_ if it does integrate well to the __`production`-grade__ code base.
+
+![](images/bx-shr-devops-flow.png)
+
+## Requirements
 For this tutorial, the following will be required:
 
 * __Dev-Machine__: a __Windows 10__ build 1903+ with the following software installed:
@@ -24,33 +44,6 @@ For this tutorial, the following will be required:
     - A private GitHub git repository to store the project files
     - A __Developer__
     - A __Project Manager__ (who, for the current purposes, can temporarily assume the role of the __Developer__)
-
-### Additional Resources
-If you are new to CI/CD, Docker, Jenkins and Self-Hosted Runners or just want to learn more and see the IAR tools in action, you can find an useful selection of recorded webinars about automated building and testing in Linux-based environments [here!][iar-bx-url]
-
-## Table of Contents
-* [Introduction](#introduction)
-* [Prepare the repository](#prepare-the-repository)
-* [Setup the Self-hosted runner](#setup-the-self-hosted-runner)
-* [Develop the project](#develop-the-project)
-* [Creating a pull request](#creating-a-pull-request)
-* [Manage the code changes](#manage-the-code-changes)
-* [Summary](#summary)
-
-
-## Introduction
-For this tutorial, we are going to use the [GitHub's Self-hosted runners][gh-shr-url] to build a project on a local building machine while __GitHub Actions__ orchestrates the entire DevOps workflow for us.
-
-On this DevOps workflow, we are going to create one [__private__][gh-shr-priv-url] repository hosted at __GitHub__ containing our project. 
-
-The private repository will have a __`production`__ branch in which __only__ the __Project Manager__ should have the authority to approve code changes.
-
-A __Developer__ clones the repository with the __`production`__ branch and then create a feature branch named __`dev-<feature-name||bug-fix>`__ containing a new feature or a bug fix. Then he pushes the branch to the _Origin_. This will trigger a __GitHub Action__ to build the project using the __IAR Build Tools__ in a __Self-hosted runner__.
-
-This way we can make sure that a newly developed feature will not break the build. This scheme will improve the project's quality, and it will help the __Project Manager__ in the validation process while deciding which code changes are acceptable _and_ if it does integrate well to the __`production`-grade__ code base.
-
-![](images/bx-shr-devops-flow.png)
-
 
 ## Prepare the repository
 The first part of this tutorial assumes that the __Project Manager__ is already logged into his `https://github.com/<username>` in order to setup a private repository on GitHub. 
