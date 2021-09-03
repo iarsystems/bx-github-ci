@@ -240,22 +240,22 @@ Over time this practice helps guaranteeing convergence to improved quality of th
 
 
 ## Summary
-And that is how it can be done. Building a dedicated self-hosted GitHub Action runner might be a good solution for CI/CD workflows depending on your requirements. 
-
-Keep in mind that this tutorial was created to inspire you and your team with one example taken from many other combinations that orchestrates DevOps CI/CD workflows to build firmware projects with our [IAR Build Tools][iar-bx-url].  For more tutorials, stay tuned on our [GitHub page][gh-iar-url]. As always, this tutorial is __not__ a replacement for the all the aforementioned tools' documentation. 
-
+In short, in this tutorial we went through one of the many ways that the [IAR Build Tools for Linux][iar-bx-url] can be used in CI scenarios.
+   
+The GitHub Actions provides a great and scalable way to manage automation tasks for building, testing and deploying software. 
+   
+For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and the [IAR Build Tools official page][iar-bx-url].
 
 <!-- links -->
 [iar-bx-url]: https://www.iar.com/bx
-[iar-lms2-url]: https://www.iar.com/support/tech-notes/licensing/iar-license-server-tools-lms2/
+[iar-lms2-url]: https://links.iar.com/lms2-server
 
 [gh-join-url]: https://github.com/join
 [gh-azure-url]: https://azure.microsoft.com/en-us/products/github/
 [gh-shr-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners 
 [gh-shr-priv-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories
 [gh-iar-url]: https://github.com/IARSystems
-[gh-bxarm-docker-url]: https://github.com/IARSystems/bxarm-docker
 
-[repo-wiki-url]: https://github.com/IARSystems/bx-self-hosted-runners
-[repo-new-issue-url]: https://github.com/IARSystems/bx-self-hosted-runners/issues/new
-[repo-old-issue-url]: https://github.com/IARSystems/bx-self-hosted-runners/issues?q=is%3Aissue+is%3Aopen%7Cclosed
+[repo-wiki-url]: https://github.com/IARSystems/bx-github-ci
+[repo-new-issue-url]: https://github.com/IARSystems/bx-github-ci/issues/new
+[repo-old-issue-url]: https://github.com/IARSystems/bx-github-ci/issues?q=is%3Aissue+is%3Aopen%7Cclosed
