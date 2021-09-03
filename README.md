@@ -84,7 +84,7 @@ Install the IAR Build Tools for Linux.
 
 >:warning: Follow the instructions and recommendations of the product's User Guide that comes with the product.
 
-Additionally, it is possible to add the __IAR Build Tools__ directories containing the executables on the search `PATH`, so they can be executed from anywhere.
+Additionally, it is possible to add the __IAR Build Tools__ directories containing the executables to the search `PATH`, so they can be executed from anywhere.
 For example, paste the snippet below to the user's `$HOME/.profile` (or the `$HOME/.bashrc`) file:
 > ```sh
 > if [ -d "/opt/iarsystems/bx<arch>" ]; then
