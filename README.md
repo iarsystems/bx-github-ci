@@ -136,9 +136,9 @@ jobs:
 ### Adding a runner to the repository
 The GitHub repository must be set to use a __runner__.
 
-Go to __Settings/Actions/Add Runner__:
+Go to __Settings/Actions/Runners/New__:
 ```
-https://github.com/<username>/shr-private/settings/actions/add-new-runner 
+https://github.com/<username>/shr-private/settings/actions/runner/new
 ```
 
 For __Operating System__: select __`Linux`__.
@@ -153,7 +153,7 @@ Go to the __build server__ and perform the following setup.
 ### Setup the runner
 Use the GitHub's provided instructions for __Download__ and __Configure__ the self-hosted runner, using its default configurations.
 
->:warning: It is possible to move the mouse pointer to each desired line. In the sequence and click on the __clipboard icon__ to copy the line's contents to the clipboard. Then paste it to the __Build Server__'s terminal.
+>:warning: By downloading and configuring the GitHub Actions Runner, you agree to the [GitHub Terms of Service](https://docs.github.com/github/site-policy/github-terms-of-service) or [GitHub Corporate Terms of Service](https://docs.github.com/github/site-policy/github-corporate-terms-of-service), as applicable.
 
 Once the runner is in place, go to the repository's __Settings/Actions__ page at:
 ```
