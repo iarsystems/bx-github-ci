@@ -283,7 +283,7 @@ Here, GitHub will give you the opportunity to write an explanation of the new fe
 
 Once ready, click `Create pull request`.
 
->:warning: Follow the link to learn more [about pull requests](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
+>:warning: Follow the link to learn more [about pull requests](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
     
     
 ## Reviewing the Pull Request
