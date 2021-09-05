@@ -23,11 +23,13 @@ The private project repository, called __origin__ in the Git jargon, starts with
 ### Development workstation
 On his workstation, a _developer_ clones the repository to start working on a new feature. For that, he creates a __feature branch__.
 
+The _developer_ launches the [IAR Embedded Workbench][], from where he can edit, build and debug the project.
+
 When the _developer_ is done with that, he can _push_ the branch to the __origin__.
 
-__GitHub Actions__ come into play and triggers an action to notify the runner about the new _push_.
+__GitHub Actions__ come into play and triggers an action to notify the runner in the _build server_ about the new _push_.
 
-The runner will then execute the "recipe" to build the project. This recipe is written in the `yml` format and can be customized. We provided simple examples as base, but the [official documentation][gh-yml-doc-url] can help with further customizations.
+The runner will then execute the "recipe" to build the project with the IAR Build Tools. This recipe is written in the `yml` format and can be customized. We provided simple examples as base, but the [official documentation][gh-yml-doc-url] can help with further customizations.
 
 If the new feature passes, the _project manager_ can decide if these changes are ready to be merged to the __master__ branch.
 
