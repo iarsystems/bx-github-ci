@@ -253,7 +253,7 @@ Push output example:
 >```
 
     
-### Creating a Pull Request
+## Creating a Pull Request
 Then it is time for the __developer__ to go back his __GitHub.com__:
 
 * Go to `https://github.com/<username>/shr-private` and notice that there is a new yellow bar saying that
