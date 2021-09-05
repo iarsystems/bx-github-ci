@@ -177,10 +177,9 @@ if [ -d "/opt/iarsystems/bx<arch>" ]; then
 fi
 ```
 
-Then update the `bx<arch>` in all the paths so they match the product you are using and save the file.
+>:warning: Update the `bx<arch>` for the paths in a way they match the product you are using.
 
-Source the file you modified for the changes to take effect:
-For example, 
+After the file is saved, it is possible to source the file you modified so the changes take effect immediately. For example, 
 ```
 source ~/.profile
 ```
