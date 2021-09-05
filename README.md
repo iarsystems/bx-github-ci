@@ -30,9 +30,9 @@ It will also use the [GitHub's Actions][gh-actions-url] workflow relying on its 
 
 
 ### Development workstation
-On his workstation, a _developer_ clones the repository to start working on a new feature. For that, he creates a __feature branch__.
+On his workstation, a _developer_ clones the repository to start working on a new feature for some project. For that, he creates a __feature branch__.
 
-The _developer_ launches the [IAR Embedded Workbench][iar-ew-url], from where he can edit, build and debug the project.
+The _developer_ then launches the [IAR Embedded Workbench][iar-ew-url], from where he can edit, build and debug the project.
 
 When the _developer_ is done with that, he can, through his own GitHub account, _push_ the branch to the __origin__ using a __git client__.
 
