@@ -127,7 +127,8 @@ the self-hosted runner, using its default configurations.
     
 Once the runner is in place, go to the repository's __Settings/Actions__ page at:
 ```
-https://github.com/<username>/shr-private/settings/actions 
+https://github.com/<username>/shr-private/settings/actions
+```
 
 The status for the __Self-hosted runner__ should be `Idle` at this point:
 ![](images/shr-idle.png)
