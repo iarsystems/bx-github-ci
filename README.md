@@ -131,7 +131,7 @@ jobs:
       - name: Build Component B
         run: $IARBUILD_PATH/iarbuild ./<arch>/componentB/componentB.ewp -build $BUILD_TYPE $IARBUILD_OPTS    
 ```
->:warning: Change <arch> to the one that suits your IAR Build Tools option.
+>:warning: Change `<arch>` to the one that suits the __IAR Build Tools__ option you are using.
 
 ### Adding a runner to the repository
 The GitHub repository must be set to use a __runner__.
