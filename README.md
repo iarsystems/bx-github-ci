@@ -12,13 +12,18 @@ If you want to be notified in your GitHub inbox about updates to this tutorial, 
 If you end up with a question specifically related to [this tutorial](https://github.com/iarsystems/bx-github-ci), you might be interested in verifying if it was already answered from [earlier questions][repo-old-issue-url]. Or, [ask a new question][repo-new-issue-url] if you could not find any answer for your question.
 
 
-
 ## Introduction
-For this tutorial, we are going to use the [GitHub's Self-hosted runners][gh-shr-url] to build a project on a local building machine while __GitHub Actions__ orchestrates the entire DevOps workflow for us.
+### Build server
+The __build server__ will contain the __IAR Build Tools for Linux__ installed.
 
-On this DevOps workflow, we are going to create one [__private__][gh-shr-priv-url] repository hosted at __GitHub__ containing our project. 
+It will also use the [GitHub's Actions][gh-actions-url] workflow relying on its [self-hosted runners][gh-shr-url] feature.  This runner will be configured to connect directly to a GitHub [__private__][gh-shr-priv-url] repository containing one or more software projects, clone the repository and then use the __IAR Build Tools for Linux__ to build and analyze these projects.
 
-The private repository will have a __`production`__ branch in which __only__ the __Project Manager__ should have the authority to approve code changes.
+The private project repository starts with a __master__ branch containing __production code base__. 
+
+### Development workstation
+On his workstation, a _developer_ clones the repository to start working on a new feature. For that, he creates a __feature branch__.
+
+
 
 A __Developer__ clones the repository with the __`production`__ branch and then create a feature branch named __`dev-<feature-name||bug-fix>`__ containing a new feature or a bug fix. Then he pushes the branch to the _Origin_. This will trigger a __GitHub Action__ to build the project using the __IAR Build Tools__ in a __Self-hosted runner__.
 
