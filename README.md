@@ -1,4 +1,4 @@
-<img align="right" src="docs/pictures/github-logo.png" />
+<img align="right" src="docs/github-logo.png" />
 
 # Tutorial<br/>IAR Build Tools for Linux in a GitHub CI 
 
