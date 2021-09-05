@@ -70,6 +70,11 @@ Here you will find some examples for different packages and their versions:
 | BXARMFS 8.50.10.35167     | IAR Build Tools for Arm, [Functional Safety Edition](https://www.iar.com/products/requirements/functional-safety/), version 8.50.10<br/>`<arch>`=`arm`<br/>`<package>`=`armfs`<br/>`<version>`=`8.50.10.35167` |
 | BXRISCV 1.40.1            | IAR Build Tools for RISC-V version 1.40.1<br/>`<arch>`=`riscv`<br/>`<package>`=`riscv`<br/>`<version>`=`1.40.1`                                |
 
+### Others
+| __Placeholder__ | __Meaning__                                                                               |
+| :-------------- | :---------------------------------------------------------------------------------------- |
+| `<username>`    | Refer to the user's GitHub's account or the user's account in the local machine, according to the context.                    |
+
 ## Preparing the repository 
 
 ### Importing an example repository
@@ -102,8 +107,9 @@ Once the importing process is complete, a message will show up:
 >```
     
 Click on the link to the new repository provided in the message to go to the new repository.    
-    
-### Adding a runner to the repository.
+
+
+### Adding a runner to the repository
 The GitHub repository must be set to use a __runner__.
 
 Go to __Settings/Actions/Add Runner__:
