@@ -198,7 +198,7 @@ git clone https://github.com/<username>/shr-private.git /mnt/c/shr-private && cd
 >:warning: For this tutorial we are assuming that the clone location will be the `C:\shr-private` folder.
 
     
-### Switching to the `dev-componentB` feature branch        
+### Switching to a feature branch        
 Now let's consider starting to work on a new feature for the `ComponentB`. Checkout a new branch named "dev-componentB", derived from the master branch:
 ```
 git checkout -b dev-componentB master
