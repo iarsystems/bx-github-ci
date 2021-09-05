@@ -1,6 +1,6 @@
 <img align="right" src="docs/pictures/github-logo.png" />
 
-# Tutorial<br/>IAR Build Tools in a GitHub CI 
+# Tutorial<br/>IAR Build Tools for Linux in a GitHub CI 
 
 
 This tutorial provides a simple example with general guidelines on how to setup a CI (Continuous Integration) workflow with [IAR Build Tools for Linux][iar-bx-url] alongside [GitHub](https://github.com).
