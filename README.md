@@ -26,7 +26,7 @@ The repository will be configured to use a GitHub's [self-hosted-runner][gh-shr-
 ### Build server
 The __build server__ will contain the [__IAR Build Tools for Linux__][iar-bx-url] installed.
 
-It will also use the [GitHub's Actions][gh-actions-url] workflow relying on its [self-hosted runners][gh-shr-url] feature.  This runner will be configured to automatically connect directly to a corresponding GitHub [__private__][gh-shr-priv-url] repository containing one or more software projects, clone the repository and then use the __IAR Build Tools for Linux__ to build and analyze these projects.
+It will also use the [GitHub's Actions][gh-actions-url] workflow relying on its [self-hosted runners][gh-shr-url] feature.  This runner will be configured to automatically connect to the corresponding [__private__][gh-shr-priv-url] repository containing one or more software projects, clone the repository and then use the __IAR Build Tools for Linux__ to build and analyze these projects.
 
 
 ### Development workstation
