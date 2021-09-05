@@ -18,16 +18,22 @@ The __build server__ will contain the __IAR Build Tools for Linux__ installed.
 
 It will also use the [GitHub's Actions][gh-actions-url] workflow relying on its [self-hosted runners][gh-shr-url] feature.  This runner will be configured to connect directly to a GitHub [__private__][gh-shr-priv-url] repository containing one or more software projects, clone the repository and then use the __IAR Build Tools for Linux__ to build and analyze these projects.
 
-The private project repository starts with a __master__ branch containing __production code base__. 
+The private project repository, called __origin__ in the Git jargon, starts with a __master__ branch containing __production code base__. 
 
 ### Development workstation
 On his workstation, a _developer_ clones the repository to start working on a new feature. For that, he creates a __feature branch__.
 
+When the _developer_ is done with that, he can _push_ the branch to the __origin__.
 
+__GitHub Actions__ come into play and triggers an action to notify the runner about the new _push_.
 
-A __Developer__ clones the repository with the __`production`__ branch and then create a feature branch named __`dev-<feature-name||bug-fix>`__ containing a new feature or a bug fix. Then he pushes the branch to the _Origin_. This will trigger a __GitHub Action__ to build the project using the __IAR Build Tools__ in a __Self-hosted runner__.
+The runner will then execute the "recipe" to build the project. This recipe is written in the `yml` format and can be customized. We provided simple examples as base, but the [official documentation][gh-yml-doc-url] can help with further customizations.
 
-This way we can make sure that a newly developed feature will not break the build. This scheme will improve the project's quality, and it will help the __Project Manager__ in the validation process while deciding which code changes are acceptable _and_ if it does integrate well to the __`production`-grade__ code base.
+If the new feature passes, the _project manager_ can decide if these changes are ready to be merged to the __master__ branch.
+
+If the new feature fails, the follow-up can be performed within GitHub's facilities for code revision.
+
+This cycle repeats as many times as required, while helping to improve the project's overall quality metrics.
 
 ![](images/bx-shr-devops-flow.png)
 
