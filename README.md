@@ -76,10 +76,9 @@ Here you will find some examples for different packages and their versions:
 | `<username>`    | Refer to the user's GitHub's account or the user's account in the local machine, according to the context.                    |
 
 ## Preparing the repository 
-
-### Importing an example repository
 Under the GitHub's account, we are going to import the [bx-workspaces-ci][bx-workspaces-url] repository. This is a public repository containing a collection of workspaces which were created using the IAR Embedded Workbench. They can be imported to become a private repository and then used for experimentation.
 
+### Importing an example repository
 Navigate to
 ```
 https://github.com/new/import
