@@ -290,7 +290,10 @@ Over time, a practice like this can help guaranteeing convergence to improved qu
     
 The IAR Build Tools for Linux along with the GitHub CI provides a great and scalable way to manage automation tasks for building, and analyzing embedded software projects. Hence it might be suitable for many use cases.
    
-For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and the [IAR Build Tools official page][iar-bx-url] and the [Weekly Breakpoint blog][iar-bkpt-url].
+For more tutorials like this, stay tuned on:
+* our [GitHub page][gh-iar-url],
+* the [IAR Build Tools official page][iar-bx-url] and 
+* the [Weekly Breakpoint blog][iar-bkpt-url].
 
 <!-- links -->
 [iar-bx-url]: https://www.iar.com/bx
