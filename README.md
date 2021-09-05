@@ -271,21 +271,21 @@ git push --set-upstream origin dev-componentB
 ## Creating a Pull Request
 Then it is time for the __developer__ to go back his __GitHub.com__:
 
-* Go to `https://github.com/<username>/shr-private` and notice that there is a new yellow bar saying that
+Go to `https://github.com/<username>/shr-private` and notice that there is a new yellow banner on the top
 ![](docs/pictures/pr-compare.png)
 
-* Click `Compare & pull request`.
+Click `Compare & pull request`.
 
-* Here, GitHub will give the __Developer__ the opportunity to write the rationale for the `component2` improvement proposal so the __Project Manager__ can have a better picture of what is going on
+Here, GitHub will give you the opportunity to write an explanation of the new feature you are pushing for the `componentB` project. That way, the code reviewer can have a better picture of what is going on
 ![](docs/pictures/pr-rationale.png)
 
-* Once ready, click `Create pull request`.
+Once ready, click `Create pull request`.
 
->:warning: Follow the link to learn more [About pull requests](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
+>:warning: Follow the link to learn more [about pull requests](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
     
     
 ## Reviewing the Pull Request
-The [bx-workspaces-ci][bx-workspaces-url] repository comes pre-loaded with a [workflow][gh-actions-url] configured in the [bx.yml](../workspace/.github/workflows/bx.yml) file that can signals the runner in the __build server__ to build all the 3 projects automatically when a new feature branch goes through a pull request.
+The [bx-workspaces-ci][bx-workspaces-url] repository comes pre-loaded with a [workflow][gh-actions-url] configured in the [`.github/workflows/bx.yml`](#adding-a-workflow) file that will trigger the notification the runner in the __build server__ needs to build all the 3 projects automatically when a new feature branch goes through a pull request.
     
 Now a project's code reviewer can start [reviewing the pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/approving-a-pull-request-with-required-reviews) containing the proposed changes in the new feature.
 
