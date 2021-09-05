@@ -288,7 +288,7 @@ In short, in this tutorial we went through one of the many ways that the [IAR Bu
 
 Over time, a practice like this can help guaranteeing convergence to improved quality of the `production-grade` code base. It also helps avoiding that new features break other parts of a project. Ultimately it builds a development log of the project which, when properly used, can become a solid asset for consistent deliveries as the project evolves.    
     
-The GitHub Actions provides a great and scalable way to manage automation tasks for building, testing and deploying software and might be suitable for many use cases.
+The IAR Build Tools for Linux along with the GitHub CI provides a great and scalable way to manage automation tasks for building, and analyzing embedded software projects. Hence it might be suitable for many use cases.
    
 For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and the [IAR Build Tools official page][iar-bx-url] and the [Weekly Breakpoint blog][iar-bkpt-url].
 
