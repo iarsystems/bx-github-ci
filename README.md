@@ -14,25 +14,17 @@ If you end up with a question specifically related to [this tutorial](https://gi
 
 ## Introduction
 ### GitHub
-At GitHub, a private project repository, called __origin__ in the Git jargon, starts with a __master__ branch containing __production code base__. 
+At GitHub, a private project repository, called __origin__ in the Git jargon, starts with a __master__ branch containing the project's __production code__ base. 
 
 The repository also contains a "recipe" for the workflow under `.github/workflows`. The recipe is written in the __YAML__ format and can be customized. We provided simple examples as base, although the [official documentation][gh-yml-doc-url] can help with further customizations.
 
-__GitHub Actions__ come into play and triggers an action to notify the runner in the _build server_ about the new _push_.
-
-On the build server, the runner will then execute the "recipe" to build the project with the __IAR Build Tools__. 
-
-If the new feature passes, the _project manager_ can decide if these changes are ready to be merged to the __master__ branch.
-
-If the new feature fails, the follow-up can be performed within GitHub's facilities for code revision.
-
-This CI repeats as many times as required, while helping to improve the project's overall quality metrics.
+The repository will be configured to use a GitHub's [self-hosted-runner][gh-shr-url].
 
 
 ### Build server
 The __build server__ will contain the __IAR Build Tools for Linux__ installed.
 
-It will also use the [GitHub's Actions][gh-actions-url] workflow relying on its [self-hosted runners][gh-shr-url] feature.  This runner will be configured to connect directly to a GitHub [__private__][gh-shr-priv-url] repository containing one or more software projects, clone the repository and then use the __IAR Build Tools for Linux__ to build and analyze these projects.
+It will also use the [GitHub's Actions][gh-actions-url] workflow relying on its [self-hosted runners][gh-shr-url] feature.  This runner will be configured to automatically connect directly to a corresponding GitHub [__private__][gh-shr-priv-url] repository containing one or more software projects, clone the repository and then use the __IAR Build Tools for Linux__ to build and analyze these projects.
 
 
 ### Development workstation
@@ -41,6 +33,19 @@ On his workstation, a _developer_ clones the repository to start working on a ne
 The _developer_ launches the [IAR Embedded Workbench][], from where he can edit, build and debug the project.
 
 When the _developer_ is done with that, he can _push_ the branch to the __origin__.
+
+### The typical CI workflow
+The objective is to have automated builds for raising the project's overall quality matrics.
+
+When a _developer_ pushes changes to the __origin__, __GitHub Actions__ come into play and triggers an action to notify the runner in the _build server_ about the new _push_.
+
+On the build server, the runner will then execute the "recipe" to build the project with the __IAR Build Tools__. 
+
+If the new feature passes, the _project manager_ can decide if these changes are ready to be merged to the __master__ branch.
+
+If the new feature fails, the follow-up can be performed within GitHub's facilities for code revision.
+
+This CI repeats as many times as required.
 
 ![](images/bx-shr-devops-flow.png)
 
