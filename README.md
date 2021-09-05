@@ -259,40 +259,36 @@ Then it is time for the __developer__ to go back his __GitHub.com__:
 * Go to `https://github.com/<username>/shr-private` and notice that there is a new yellow bar saying that
 ![](images/pr-compare.png)
 
-* Click `Compare & pull request`
+* Click `Compare & pull request`.
 
 * Here, GitHub will give the __Developer__ the opportunity to write the rationale for the `component2` improvement proposal so the __Project Manager__ can have a better picture of what is going on
 ![](images/pr-rationale.png)
 
-* Once ready, click `Create pull request`
+* Once ready, click `Create pull request`.
 
-> __Tip__
-> * Follow the link to learn more [About pull requests](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
-
-> __Note__
-> * This repository comes prepared with a __GitHub Action [workflow](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions)__ configurated in the [bxarm.yml](.github/workflows/bxarm.yml) file to build all the 3 projects.
+>:warning: Follow the link to learn more [About pull requests](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
+    
     
 ## Reviewing the Pull Request
-It is time for the __Project Manager__ to start [reviewing the pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/approving-a-pull-request-with-required-reviews) which was proposed by the __Developer__ containing the new feature.
+The [bx-workspaces-ci][bx-workspaces-url] repository comes pre-loaded with a [workflow][gh-actions-url] configured in the [bx.yml](../workspace/.github/workflows/bx.yml) file that can signals the runner in the __build server__ to build all the 3 projects automatically when a new feature branch goes through a pull request.
+    
+Now a project's code reviewer can start [reviewing the pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/approving-a-pull-request-with-required-reviews) containing the proposed changes in the new feature.
 
-Our basic GitHub Actions workflow file bxarm.yml will trigger every time a new feature branch goes through a pull request.
-
-Once it is triggered, it will use the __IAR Build Tools__ installed in the __Build Server__ alongside the runner deamon listening for new jobs.
-
-If a __Developer__ created something new that breaks the build, it will fail the automated verification, warn the __Project Manager__ about the breakage and detail the root cause of the failure.
+If a __Developer__ created something new that breaks the build, it will fail the automated verification, so a code reviewer can know  about the breakage and detail the root cause of the failure.
 ![](images/pr-build-fail.png)
 
-In this case, the author's proposed change to the shared `library` worked nicely for the `component2` but it has broken the `component1` build.
-
-The __Project Manager__ can now contact the author using the `pull request` itself to keep track of any changes, propose alternatives or even fix other components of the project which might had lurking bugs and which no one else noticed for a while.
-
-Over time this practice helps guaranteeing convergence to improved quality of the `production`-grade code base. It also helps avoiding that new features break other parts of a project. Ultimately it builds a development log of the project which, when properly used, can become a solid asset for consistent deliveries as the project evolves.
+In this case, the author's proposed change to the shared `library` worked nicely for the `componentB` but it didn't for `componentA`. 
+    
+The code reviewer can contact the author using `pull request` page, so it is easy to keep track of any ammends to the proposed code, until it is approved or rejected.
 
 
 ## Summary
+
 In short, in this tutorial we went through one of the many ways that the [IAR Build Tools for Linux][iar-bx-url] can be used in CI scenarios.
-   
-The GitHub Actions provides a great and scalable way to manage automation tasks for building, testing and deploying software. 
+
+Over time, a practice like this can help guaranteeing convergence to improved quality of the `production-grade` code base. It also helps avoiding that new features break other parts of a project. Ultimately it builds a development log of the project which, when properly used, can become a solid asset for consistent deliveries as the project evolves.    
+    
+The GitHub Actions provides a great and scalable way to manage automation tasks for building, testing and deploying software and might be suitable for many use cases.
    
 For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and the [IAR Build Tools official page][iar-bx-url] and the [Weekly Breakpoint blog][iar-bkpt-url].
 
