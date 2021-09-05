@@ -83,7 +83,7 @@ Fill __Your old repository's clone URL__ with
 https://github.com/IARSystems/bx-workspaces-ci
 ```
 
-On __Your new repository details__, fill with the new name. For this example, let's use `shr-private'
+On __Your new repository details__, fill with the new name. For this example, let's use `shr-private`:
 ```
 shr-private
 ```
