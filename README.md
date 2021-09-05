@@ -155,88 +155,100 @@ source ~/.profile
 ```
 
 
-## Developing the project
+## Developing a Project
 Now that the server-side of the setup is done, let's start to try it from a __developer__'s perspective, from within the [Development workstation](#development-workstation).
+    
+    
+### Cloning the repository    
 
-And then, on the __Dev-Machine__, the __Developer__ will perform the following:
+Launch the terminal which provides your __git client__ and clone the `shr-private` repository you imported into your `<username>` account:
 
-* Launch __Bash for Git__ and then:
-```sh
-# Clone the "shr-private" repository
-$ git clone https://github.com/<username>/shr-private.git
-
-# Change to the repository directory
-$ cd shr-private
-
-# Checkout a new branch named "dev-component2-improvement"
-$ git checkout -b  dev-component2-improvement
 ```
-> __Note__
-> * This repository comes prepared with a __GitHub Action [workflow](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions)__ configurated in the [bxarm.yml](.github/workflows/bxarm.yml) file to build all the 3 projects.
+git clone https://github.com/<username>/shr-private.git /mnt/c/shr-private && cd /mnt/c/shr-private
+```
+>:warning: For this tutorial we are assuming that the clone location will be the `C:\shr-private` folder.
 
-* Launch the __IAR Embedded Workbench for Arm 8.50.6__ and
-   - Go to `File` → `Open Workspace...` and select the `workspace.eww` file inside the [workspace](workspace) folder. On the __Workspace__ window, the __`library`__ project should show up __highlighted__ as the active project. 
-   - Right-click on the __`library`__ project and choose `Make` (or <kbd>F7</kbd>). The `library` project should build with no errors.
-   - Now right-click on the `component2` project and __Set as Active__.
-   - Unfold the __`component2`__ project tree and double click on its [main.c](workspace/component2/main.c) file so it will open in the __Code Editor__.
-   - Right-click on __`component2`__ and choose `Make` (or <kbd>F7</kbd>). The `component2` project should build with no errors.
+    
+### Changing the  code for the `ComponentB` project        
+    
+Now let's consider starting to work on a new feature for the `ComponentB`. Checkout a new branch named "dev-componentB"
+```
+git checkout -b dev-componentB
+```
 
-### Changing the code for `component2` project 
+Choose `File` > `Open Workspace...` and navigate to `C:\shr-project\<arch>`. You will find a `workspace.eww` file. Go ahead and __open__ it.
 
-Now the __Developer__ will start to work on the `dev-component2-improvement` and, for some reason the `DATATYPE` used in `component2` had to change from `uint16_t` to __`float`__ to hold values greater than `0xFFFF`.
+This example workspace comes with three projects:
+* library
+* componentA
+* componentB
 
-* On the [main.c](workspace/component2/main.c) file, right-click on the line with the __[`#include "library.h"`](workspace/component2/main.c#L12)__ and choose __Open "library.h"__.
+Right-click on the __`library`__ project and choose `Make` (or <kbd>F7</kbd>). The `library` project should be built with no errors.
+   - Now right-click on the `componentB` project and __Set as Active__.
+   - Unfold the __`componentB`__ project tree and double click on its [main.c](../workspace/portable/componentB/main.c) file so it will open in the __Code Editor__.
+   - Right-click on __`componentB`__ and choose `Make` (or <kbd>F7</kbd>). The `componentB` project should be built with no errors.
 
-* In the [library.h](workspace/library/library.h) file, find the line __[`#define DATATYPE uint16_t`](workspace/library/library.h#L19)__ and replace it with
+### Changing the code for `componentB` project 
+
+The __developer__ starts to work on the `dev-componentB` branch and, for illustrative purposes, the `DATATYPE` used in `componentB` had to change from `uint16_t` to __`float`__, for example, to hold values greater than `0xFFFF`.
+
+On the [main.c](../workspace/portable/componentB/main.c) file, right-click on the line with the __[`#include "library.h"`](../workspace/portable/componentB/main.c#L12)__ and choose __Open "library.h"__.
+
+In the [library.h](../workspace/portable/library/library.h) file, find the line __[`#define DATATYPE uint16_t`](../workspace/portable/library/library.h#L19)__ and replace it with
 ```c
 #define DATATYPE float
 ```
-
-* Now rebuild the `library` project
-   - Right-click on `library` and choose `Make` (or <kbd>F7</kbd>). It should build with no errors.
-
-* And then rebuild the `component2` project
-   - Right-click on `component2` and choose `Make` (or <kbd>F7</kbd>). It should build with no errors.
-
-Back to the __Git Bash__
-
-* Commit to the changes to the cloned `shr-private` repository
-```sh
-# Stage the modified file for commit
-$ git add workspace/library/library.h
-
-# Commit the changes to the local "shr-private" repository
-$ git commit -m "Component 2 improvement proposal"
+  
+In the [main.c](../workspace/portable/componentB/main.c) file, update the constant `z` to `100000`.
+```c
+  const DATATYPE z = 100000;
 ```
 
-* The expected output is similar to this, but with a different commit hash:
-> ```
-> [dev-component2-improvement e167db8] Component 2 improvement proposal
-> 1 file changed, 1 insertion(+), 1 deletion(-)
-> ```
+On the same file, update the `debug_log()` function string format to handle the __float__ type. Change the formatted string from `%d` to `%f` as below:
+```c
+  debug_log("Sum = %f\r\n", sum);
+```
+and
+```c
+  debug_log("Mul = %f\r\n", mul);
+```
+  
+Rebuild the `library` project using right-click on `library` and choose `Make` (or <kbd>F7</kbd>). It should build with no errors.
 
-* Finally `push` the code changes back to the `origin` repository:
-```sh
-$ git push -u origin dev-component2-improvement
+Rebuild the `componentB` project using right-click on `componentB` and choose `Make` (or <kbd>F7</kbd>). It should build with no errors.
+
+### Commit the changes
+Go back to the Git bash terminal.
+
+Commit to the changes to the tracked files in the cloned `shr-project` repository:
+```
+git commit --all --message "Improvement proposal for componentB"
 ```
 
-The expected output is similar to:
-> ```
-> Enumerating objects: 9, done.
-> Counting objects: 100% (9/9), done.
-> Delta compression using up to 8 threads
-> Compressing objects: 100% (5/5), done.
-> Writing objects: 100% (5/5), 1.07 KiB | 363.00 KiB/s, done.
-> Total 5 (delta 4), reused 0 (delta 0), pack-reused 0
-> remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
-> remote:
-> remote: Create a pull request for 'dev-component2-improvement' on GitHub by visiting:
-> remote:      https://github.com/<username>/shr-private/pull/new/dev-component2-improvement
-> remote:
-> To github.com:<username>/shr-private.git
->  * [new branch]      dev-component2-improvement -> dev-component2-improvement
-> Branch 'dev-component2-improvement' set up to track remote branch 'dev-component2-improvement' from 'origin'.
-> ```
+The expected output is similar to this, but with a different commit hash:
+>```
+>[dev-componentB 5b03ed8] Improvement proposal for componentB
+>  2 files changed, 5 insertions(+), 5 deletions(-)
+>```
+
+Finally publish these changes with `git push`, so the code changes go back to the `origin` repository:
+```
+git push --set-upstream origin dev-componentB
+```
+
+Push output example:
+>```
+>Enter passphrase for key '/home/<developer>/.ssh/id_ed25519_dev':
+>Enumerating objects: 9, done.
+>Counting objects: 100% (9/9), done.
+>Delta compression using up to 8 threads
+>Compressing objects: 100% (6/6), done.
+>Writing objects: 100% (7/7), 578 bytes | 430.00 KiB/s, done.
+>Total 7 (delta 4), reused 0 (delta 0)
+>To git@github.com:<username>/shr-project.git
+> * [new branch]      dev-componentB -> dev-componentB
+>Branch 'dev-componentB' set up to track remote branch 'dev-componentB' from 'origin'.
+>```
    
 ## Creating a Pull Request
 Then it is time for the __Developer__ to go back to __GitHub.com__:
@@ -254,7 +266,9 @@ Then it is time for the __Developer__ to go back to __GitHub.com__:
 > __Tip__
 > * Follow the link to learn more [About pull requests](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
 
-
+> __Note__
+> * This repository comes prepared with a __GitHub Action [workflow](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions)__ configurated in the [bxarm.yml](.github/workflows/bxarm.yml) file to build all the 3 projects.
+    
 ## Reviewing the Pull Request
 It is time for the __Project Manager__ to start [reviewing the pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/approving-a-pull-request-with-required-reviews) which was proposed by the __Developer__ containing the new feature.
 
@@ -287,7 +301,7 @@ For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and th
 
 [gh-join-url]: https://github.com/join
 [gh-azure-url]: https://azure.microsoft.com/en-us/products/github
-[gh-yml-doc-url]: https://github.com
+[gh-yml-doc-url]: https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions
 [gh-shr-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners 
 [gh-shr-priv-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories
 [gh-actions-url]: https://docs.github.com/en/actions
