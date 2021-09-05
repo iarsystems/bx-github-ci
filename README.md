@@ -52,6 +52,21 @@ This CI repeats as many times as required.
 ![](images/bx-shr-devops-flow.png)
 
 ## Conventions
+As this tutorial is intended to be flexible with respect to the tools and packages that can be used, it becomes important to establish some conventions for when referring to certain entities.
+
+### Packages
+| __Placeholder__ | __Meaning__                                                                               |
+| :-------------- | :---------------------------------------------------------------------------------------- |
+| `<arch>`        | __Architecture__<br/>Valid: `arm`, `riscv`, `rh850`, `rl78`, `rx`                         |
+| `<package>`     | __Product package__<br/>Valid: `arm`, `armfs`, `riscv`, `rh850`, `rh850fs`, `rl78`, `rx`  |
+| `<version>`     | __Package version__<br/>Valid: `major`.`minor`.`patch` `[.build]`                         |
+
+Here you will find some examples for different packages and their versions:
+| __Package/Version__       | __Replace with__                                                                                                                               |
+| :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| BXARM 9.10.1              | IAR Build Tools for Arm version 9.10.1<br/>`<arch>`=`arm`<br/>`<package>`=`arm`<br/>`<version>`=`9.10.1`                                       |
+| BXARMFS 8.50.10.35167     | IAR Build Tools for Arm, [Functional Safety Edition](https://www.iar.com/products/requirements/functional-safety/), version 8.50.10<br/>`<arch>`=`arm`<br/>`<package>`=`armfs`<br/>`<version>`=`8.50.10.35167` |
+| BXRISCV 1.40.1            | IAR Build Tools for RISC-V version 1.40.1<br/>`<arch>`=`riscv`<br/>`<package>`=`riscv`<br/>`<version>`=`1.40.1`                                |
 
 ## Preparing the repository 
 Under the GitHub's account, we are going to import the [bx-workspaces-ci][bx-workspaces-url] repository. This is a public repository containing a collection of workspaces created with the IAR Embedded Workbench. They can be imported to become a private repository and then used for experimentation.
@@ -88,18 +103,18 @@ Go to __Settings/Actions/Add Runner__
 ```
 https://github.com/<username>/shr-private/settings/actions/add-new-runner 
 ```
-    
+
 For __Operating System__: select `Linux`
 
 For __Architecture__: select `x64`
-          
+
 ## Setup the Self-hosted runner
 The __Project Manager__ should access the __Build-Server__ to perform the following setup:
 
 ### Install the IAR Build Tools for Linux
 Install the IAR Build Tools for Linux.
 
->:warning: Follow the instructions and recommendations of the product's User Guide that comes with the product.
+>:warning: Follow the instructions and recommendations of the User Guide that comes with the product.
 
 Additionally, it is possible to add the __IAR Build Tools__ directories containing the executables to the search `PATH`, so they can be executed from anywhere.
 For example, paste the snippet below to the user's `$HOME/.profile` (or else the `$HOME/.bashrc`) file:
