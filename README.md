@@ -112,8 +112,7 @@ Click on the link to the new repository provided in the message to go to the new
 On your `shr-private` repository, use the GitHub interface to add the following new file `.github/workflows/bx.yml`:
 ```yaml
 name: IAR Build Tools CI
-
-# Controls when the action will run. Triggers the workflow on push 
+# Triggers the action on push 
 on:
   push:
     branches: [ dev* ]
@@ -121,26 +120,17 @@ env:
   BUILD_TYPE: Debug  
   IARBUILD_PATH: /opt/iarsystems/bx<arch>/common/bin
   IARBUILD_OPTS: -log all -parallel 2
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# A workflow is made of one or more jobs 
 jobs:
-     
-  # This workflow contains a single job called "iarbuild"
+  # This workflow contains a single job called "iarbuild" with 4 steps
   iarbuild:
-    # The type of runner that the job will run on
     runs-on: self-hosted
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
       - name: Build Library
         run: $IARBUILD_PATH/iarbuild ./<arch>/library/library.ewp       -build $BUILD_TYPE $IARBUILD_OPTS
-
       - name: Build Component A
         run: $IARBUILD_PATH/iarbuild ./<arch>/componentA/componentA.ewp -build $BUILD_TYPE $IARBUILD_OPTS
-      
       - name: Build Component B
         run: $IARBUILD_PATH/iarbuild ./<arch>/componentB/componentB.ewp -build $BUILD_TYPE $IARBUILD_OPTS    
 ```
