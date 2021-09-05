@@ -292,7 +292,7 @@ The IAR Build Tools for Linux along with the GitHub CI provides a great and scal
    
 For more tutorials like this, stay tuned on:
 * our [GitHub page][gh-iar-url],
-* the [IAR Build Tools official page][iar-bx-url] and 
+* the [IAR Build Tools for Linux homepage][iar-bx-url] and 
 * the [Weekly Breakpoint blog][iar-bkpt-url].
 
 <!-- links -->
