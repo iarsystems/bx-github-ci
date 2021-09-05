@@ -71,6 +71,8 @@ Here you will find some examples for different packages and their versions:
 | BXRISCV 1.40.1            | IAR Build Tools for RISC-V version 1.40.1<br/>`<arch>`=`riscv`<br/>`<package>`=`riscv`<br/>`<version>`=`1.40.1`                                |
 
 ## Preparing the repository 
+
+### Importing an example repository
 Under the GitHub's account, we are going to import the [bx-workspaces-ci][bx-workspaces-url] repository. This is a public repository containing a collection of workspaces created with the IAR Embedded Workbench. They can be imported to become a private repository and then used for experimentation.
 
 Navigate to
@@ -96,11 +98,14 @@ Finally, click __Begin import__.
 
 Once the importing process is complete, a message will show up:
 >```
->"Your new repository '<username>/shr-private' is ready."
+>"Your new repository `<username>/shr-private` is ready."
 >```
     
-Click on the link to the new repository provided in the message. 
+Click on the link to the new repository provided in the message to go to the new repository.    
     
+### Adding a runner to the repository.
+The GitHub repository must be set to use a __runner__.
+
 Go to __Settings/Actions/Add Runner__:
 ```
 https://github.com/<username>/shr-private/settings/actions/add-new-runner 
