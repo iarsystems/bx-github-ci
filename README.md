@@ -13,12 +13,27 @@ If you end up with a question specifically related to [this tutorial](https://gi
 
 
 ## Introduction
+### GitHub
+At GitHub, a private project repository, called __origin__ in the Git jargon, starts with a __master__ branch containing __production code base__. 
+
+The repository also contains a "recipe" for the workflow under `.github/workflows`. The recipe is written in the __YAML__ format and can be customized. We provided simple examples as base, although the [official documentation][gh-yml-doc-url] can help with further customizations.
+
+__GitHub Actions__ come into play and triggers an action to notify the runner in the _build server_ about the new _push_.
+
+On the build server, the runner will then execute the "recipe" to build the project with the __IAR Build Tools__. 
+
+If the new feature passes, the _project manager_ can decide if these changes are ready to be merged to the __master__ branch.
+
+If the new feature fails, the follow-up can be performed within GitHub's facilities for code revision.
+
+This CI repeats as many times as required, while helping to improve the project's overall quality metrics.
+
+
 ### Build server
 The __build server__ will contain the __IAR Build Tools for Linux__ installed.
 
 It will also use the [GitHub's Actions][gh-actions-url] workflow relying on its [self-hosted runners][gh-shr-url] feature.  This runner will be configured to connect directly to a GitHub [__private__][gh-shr-priv-url] repository containing one or more software projects, clone the repository and then use the __IAR Build Tools for Linux__ to build and analyze these projects.
 
-The private project repository, called __origin__ in the Git jargon, starts with a __master__ branch containing __production code base__. 
 
 ### Development workstation
 On his workstation, a _developer_ clones the repository to start working on a new feature. For that, he creates a __feature branch__.
@@ -27,35 +42,8 @@ The _developer_ launches the [IAR Embedded Workbench][], from where he can edit,
 
 When the _developer_ is done with that, he can _push_ the branch to the __origin__.
 
-__GitHub Actions__ come into play and triggers an action to notify the runner in the _build server_ about the new _push_.
-
-The runner will then execute the "recipe" to build the project with the IAR Build Tools. This recipe is written in the `yml` format and can be customized. We provided simple examples as base, but the [official documentation][gh-yml-doc-url] can help with further customizations.
-
-If the new feature passes, the _project manager_ can decide if these changes are ready to be merged to the __master__ branch.
-
-If the new feature fails, the follow-up can be performed within GitHub's facilities for code revision.
-
-This cycle repeats as many times as required, while helping to improve the project's overall quality metrics.
-
 ![](images/bx-shr-devops-flow.png)
 
-## Requirements
-For this tutorial, the following will be required:
-
-* __Dev-Machine__: a __Windows 10__ build 1903+ with the following software installed:
-   - [__IAR Embedded Workbench for Arm 8.50.6__](https://www.iar.com/arm)
-   - [Git for Windows](https://git-scm.com/download/win) (includes _bash_)
- 
-* __Build-Server__: a __Ubuntu__ v18.04+ with the following software installed:
-    - [__IAR build tools for Arm 8.50.6__](https://www.iar.com/about/contact/sales/) (referred as `BXARM`)
- 
-* [__IAR License Server__][iar-lms2-url] already __up__, loaded with __activated__ `BXARM` licenses and __reachable__ from the __Build-Server__
-
-* __GitHub.com__:
-    - A [GitHub account][gh-join-url] (or a [Microsoft Azure account][gh-azure-url])
-    - A private GitHub git repository to store the project files
-    - A __Developer__
-    - A __Project Manager__ (who, for the current purposes, can temporarily assume the role of the __Developer__)
 
 ## Prepare the repository
 The first part of this tutorial assumes that the __Project Manager__ is already logged into his `https://github.com/<username>` in order to setup a private repository on GitHub. 
@@ -261,6 +249,7 @@ For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and th
 
 [gh-join-url]: https://github.com/join
 [gh-azure-url]: https://azure.microsoft.com/en-us/products/github/
+[gh-yml-doc-url]: https://github.com/
 [gh-shr-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners 
 [gh-shr-priv-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories
 [gh-iar-url]: https://github.com/IARSystems
