@@ -160,7 +160,6 @@ Now that the server-side of the setup is done, let's start to try it from a __de
     
     
 ### Cloning the repository    
-
 Launch the terminal which provides your __git client__ and clone the `shr-private` repository you imported into your `<username>` account:
 
 ```
@@ -169,7 +168,7 @@ git clone https://github.com/<username>/shr-private.git /mnt/c/shr-private && cd
 >:warning: For this tutorial we are assuming that the clone location will be the `C:\shr-private` folder.
 
     
-### Changing the  code for the `ComponentB` project        
+### Switching to the `dev-componentB` feature branch        
     
 Now let's consider starting to work on a new feature for the `ComponentB`. Checkout a new branch named "dev-componentB"
 ```
