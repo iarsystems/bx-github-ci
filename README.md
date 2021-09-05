@@ -166,7 +166,7 @@ Install the IAR Build Tools for Linux.
 
 >:warning: Follow the instructions and recommendations of the User Guide that comes with the product.
 
-Additionally, it is possible to add the __IAR Build Tools__ directories containing the executables to the search `PATH`, so they can be executed from anywhere. This is not a requirement for this tutorial, but it might be convenient for some users.
+Additionally, it is possible to add the __IAR Build Tools__ directories containing the executables to the search `PATH`, so they can be executed from anywhere without entering with their full path. This is not a requirement for this tutorial, but it might be convenient for some users.
     
 For example, paste the snippet below to the user's `$HOME/.profile` (or else the `$HOME/.bashrc`) file:
 ```sh
