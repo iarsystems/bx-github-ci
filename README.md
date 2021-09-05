@@ -36,7 +36,7 @@ The _developer_ launches the [IAR Embedded Workbench][iar-ew-url], from where he
 
 When the _developer_ is done with that, he can _push_ the branch to the __origin__ using his __git client__.
 
->:warning: Popular choices for Windows that provides a __git client__ are [Git for Windows][g4w-url] or [Ubuntu WSL from Microsoft Store][wsl-url].
+>:warning: Popular choices for Windows that provide a __git client__ are [Git for Windows][g4w-url] or [Ubuntu WSL][wsl-url].
 
 ### The typical CI workflow
 The objective is to have automated builds for raising the project's overall quality matrics.
