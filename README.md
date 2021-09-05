@@ -36,7 +36,7 @@ The _developer_ then launches the [IAR Embedded Workbench][iar-ew-url], from whe
 
 When the _developer_ is done with that, he can, through his own GitHub account, _push_ the branch to the __origin__ using a __git client__.
 
->:warning: Popular choices for Windows that provide a __git client__ are [Git for Windows][g4w-url] or [Ubuntu WSL][wsl-url].
+>:warning: Popular choices for Windows that provide a __git client__ are [Git for Windows][g4w-url], [GitHub for Desktop][gh-gd-url] or even [Ubuntu WSL][wsl-url]. In this tutorial, we are going to use the git from the command-line.
 
 ### The typical CI workflow
 The objective is to have automated builds for raising the project's overall quality matrics.
@@ -321,6 +321,7 @@ For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url].
 [gh-shr-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners 
 [gh-shr-priv-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories
 [gh-actions-url]: https://docs.github.com/en/actions
+[gh-gd-url]: https://desktop.github.com/
 [gh-iar-url]: https://github.com/IARSystems
     
 [g4w-url]: https://git-scm.com/download/win
