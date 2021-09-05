@@ -34,7 +34,9 @@ On his workstation, a _developer_ clones the repository to start working on a ne
 
 The _developer_ launches the [IAR Embedded Workbench][iar-ew-url], from where he can edit, build and debug the project.
 
-When the _developer_ is done with that, he can _push_ the branch to the __origin__.
+When the _developer_ is done with that, he can _push_ the branch to the __origin__ using his __git client__.
+
+>:warning: Popular choices for Windows that provides a __git client__ are [Git for Windows][g4w-url] or [Ubuntu WSL from Microsoft Store][wsl-url].
 
 ### The typical CI workflow
 The objective is to have automated builds for raising the project's overall quality matrics.
@@ -99,18 +101,36 @@ Once the importing process is complete, a message will show up:
     
 Click on the link to the new repository provided in the message. 
     
-Go to __Settings/Actions/Add Runner__ 
+Go to __Settings/Actions/Add Runner__:
 ```
 https://github.com/<username>/shr-private/settings/actions/add-new-runner 
 ```
 
-For __Operating System__: select `Linux`
+For __Operating System__: select __`Linux`__.
 
-For __Architecture__: select `x64`
+For __Architecture__: select __`x64`__.
+
+Leave this page open.
+    
+## Setup the Build Server
+Go to the __build server__ and perform the following setup.
+
+### Setup the runner
+Use the GitHub's provided instructions for...
+
+* __Download__ and __Configure__
+
+the self-hosted runner, using its default configurations.
+
+>:warning: It is possible to move the mouse pointer to each desired line. In the sequence and click on the __clipboard icon__ to copy the line's contents to the clipboard. Then paste it to the __Build Server__'s terminal.
 
     
-## Setup the Self-hosted runner
-The __Project Manager__ should access the __Build-Server__ to perform the following setup:
+Once the runner is in place, go to the repository's __Settings/Actions__ page at:
+```
+https://github.com/<username>/shr-private/settings/actions 
+
+The status for the __Self-hosted runner__ should be `Idle` at this point:
+![](images/shr-idle.png)
 
 ### Install the IAR Build Tools for Linux
 Install the IAR Build Tools for Linux.
@@ -133,25 +153,9 @@ For example,
 source ~/.profile
 ```
 
-### Configure the GitHub Actions runner
-Then follow the GitHub's instructions for...
 
-* __Download__
-
-and
-
-* __Configure__
-
-...your self-hosted runner, using its default configurations.
-
-> __Tip__
-> * You can move the mouse pointer to each desired line in the sequence and click on the __clipboard icon__ to copy it to the clipboard and then paste it to the terminal of your __Build-Server__.
-
-Once you have it configurated, the Actions configuration page (`https://github.com/<username>/shr-private/settings/actions`) should show the __Self-hosted runner__ as `Idle`:
-![](images/shr-idle.png)
-
-## Develop the project
-As soon as the preliminary setup is done, the __Project Manager__ can notify the __Developer__ about the new private repository for the project's CI/CD workflow.
+## Developing the project
+Now that the server-side of the setup is done, let's start to try it from a __developer__'s perspective, from within the [Development workstation](#development-workstation).
 
 And then, on the __Dev-Machine__, the __Developer__ will perform the following:
 
@@ -287,6 +291,9 @@ For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and th
 [gh-shr-priv-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories
 [gh-actions-url]: https://docs.github.com/en/actions
 [gh-iar-url]: https://github.com/IARSystems
+    
+[g4w-url]: https://git-scm.com/download/win
+[wsl-url]: https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71
 
 [bx-workspaces-url]: https://github.com/IARSystems/bx-workspaces-ci
 [repo-wiki-url]: https://github.com/IARSystems/bx-github-ci
