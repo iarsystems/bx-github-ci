@@ -204,7 +204,7 @@ Now let's consider starting to work on a new feature for the `ComponentB`. Check
 git checkout -b dev-componentB master
 ```
 
-Choose `File` → `Open Workspace...` and navigate to `C:\shr-project\<arch>`. You will find a `workspace.eww` file. Go ahead and __open__ it.
+In the __IAR Embedded Workbench IDE__ choose `File` → `Open Workspace...` and navigate to `C:\shr-project\<arch>`. You will find a `workspace.eww` file. Go ahead and __open__ it.
 
 This example workspace comes with 3 projects:
 * library
