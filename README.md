@@ -273,12 +273,12 @@ git push --set-upstream origin dev-componentB
 Then it is time for the __developer__ to go back his __GitHub.com__:
 
 * Go to `https://github.com/<username>/shr-private` and notice that there is a new yellow bar saying that
-![](images/pr-compare.png)
+![](docs/pictures/pr-compare.png)
 
 * Click `Compare & pull request`.
 
 * Here, GitHub will give the __Developer__ the opportunity to write the rationale for the `component2` improvement proposal so the __Project Manager__ can have a better picture of what is going on
-![](images/pr-rationale.png)
+![](docs/pictures/pr-rationale.png)
 
 * Once ready, click `Create pull request`.
 
@@ -291,7 +291,7 @@ The [bx-workspaces-ci][bx-workspaces-url] repository comes pre-loaded with a [wo
 Now a project's code reviewer can start [reviewing the pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/approving-a-pull-request-with-required-reviews) containing the proposed changes in the new feature.
 
 If a developer created something new that breaks the existing build, it will fail the automated verification. So a code reviewer can know imediatelly about the breakage and detail the root cause of the failure.
-![](images/pr-build-fail.png)
+![](docs/pictures/pr-build-fail.png)
 
 In this case, the author's proposed change to the shared `library` worked nicely for the `componentB` but it didn't for `componentA`. 
     
