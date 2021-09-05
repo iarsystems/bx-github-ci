@@ -20,6 +20,8 @@ The repository also contains a "recipe" for the workflow under `.github/workflow
 
 The repository will be configured to use a GitHub's [self-hosted-runner][gh-shr-url].
 
+>:warning: GitHub requires an [account][gh-join-url]. An [Azure][gh-azure-url] account also can be used.
+
 
 ### Build server
 The __build server__ will contain the [__IAR Build Tools for Linux__][iar-bx-url] installed.
