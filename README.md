@@ -183,9 +183,12 @@ This example workspace comes with three projects:
 * componentB
 
 Right-click on the __`library`__ project and choose `Make` (or <kbd>F7</kbd>). The `library` project should be built with no errors.
-   - Now right-click on the `componentB` project and __Set as Active__.
-   - Unfold the __`componentB`__ project tree and double click on its [main.c](../workspace/portable/componentB/main.c) file so it will open in the __Code Editor__.
-   - Right-click on __`componentB`__ and choose `Make` (or <kbd>F7</kbd>). The `componentB` project should be built with no errors.
+
+Now right-click on the `componentB` project and __Set as Active__.
+
+Unfold the __`componentB`__ project tree and double click on its [main.c](../workspace/portable/componentB/main.c) file so it will open in the __Code Editor__.
+
+Right-click on __`componentB`__ and choose `Make` (or <kbd>F7</kbd>). The `componentB` project should be built with no errors.
 
 ### Changing the code for `componentB` project 
 
