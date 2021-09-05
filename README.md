@@ -161,7 +161,7 @@ https://github.com/<username>/shr-private/settings/actions
 ```
 
 The status for the __Self-hosted runner__ should be `Idle` at this point:
-![](images/shr-idle.png)
+![](docs/pictures/shr-idle.png)
 
 ### Install the IAR Build Tools for Linux
 Install the IAR Build Tools for Linux.
