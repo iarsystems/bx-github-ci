@@ -151,15 +151,10 @@ Leave this page open.
 Go to the __build server__ and perform the following setup.
 
 ### Setup the runner
-Use the GitHub's provided instructions for...
-
-* __Download__ and __Configure__
-
-the self-hosted runner, using its default configurations.
+Use the GitHub's provided instructions for __Download__ and __Configure__ the self-hosted runner, using its default configurations.
 
 >:warning: It is possible to move the mouse pointer to each desired line. In the sequence and click on the __clipboard icon__ to copy the line's contents to the clipboard. Then paste it to the __Build Server__'s terminal.
 
-    
 Once the runner is in place, go to the repository's __Settings/Actions__ page at:
 ```
 https://github.com/<username>/shr-private/settings/actions
