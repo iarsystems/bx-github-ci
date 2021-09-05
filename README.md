@@ -51,38 +51,47 @@ This CI repeats as many times as required.
 
 ![](images/bx-shr-devops-flow.png)
 
+## Conventions
 
-## Prepare the repository
-The first part of this tutorial assumes that the __Project Manager__ is already logged into his `https://github.com/<username>` in order to setup a private repository on GitHub. 
+## Preparing the repository 
+Under the GitHub's account, we are going to import the [bx-workspaces-ci][bx-workspaces-url] repository. This is a public repository containing a collection of workspaces created with the IAR Embedded Workbench. They can be imported to become a private repository and then used for experimentation.
 
-Accelerating things a little bit, we are going to re-use this public repository as base template for the new private one since it comes with an __IAR Embedded Workbench workspace__ that the __Developer__ will, later on, be able to experiment with simulating a new feature implementation under a CI/CD paradigm.
-
-* On __GitHub.com__, import [this repository](https://github.com/IARSystems/bx-self-hosted-runners)
-    - into a [new private repository](https://github.com/new/import)
-    - __Name__ `shr-private`
-    - __Privacy__ `Private`
-    - Click __Begin import__
-
-* Once the _importing is complete_, a message will show up:
+Navigate to
 ```
-"Your new repository '<username>/shr-private' is ready."
+https://github.com/new/import
 ```
-* Click on that link to the new repository in the message.
 
-* Go to __Settings__ 
-> Equivalent URL: `https://github.com/<username>/shr-private/settings`
+Fill __Your old repository's clone URL__ with
+```
+https://github.com/IARSystems/bx-workspaces-ci
+```
 
-* And then __Actions__ 
-> Equivalent URL: `https://github.com/<username>/shr-private/settings/actions`
+On __Your new repository details__, fill with the new name. For this example, let's use `shr-private'
+```
+shr-private
+```
 
-* On the bottom of the page, click __`Add Runner`__
-> Equivalent URL: `https://github.com/<username>/shr-private/settings/actions/add-new-runner`
+Make sure that __Privacy__ is set to `private`.
 
-* For __Operating System__ 
-   - Select `Linux`
+>:warning: GitHub adverts against using self-hosted runners on public repositories due [security issues][gh-shr-priv-url] when using self-hosted runners on public repositories. 
 
-* For __Architecture__ 
-   - Select `x64`
+Finally, click __Begin import__.
+
+Once the importing process is complete, a message will show up:
+>```
+>"Your new repository '<username>/shr-private' is ready."
+>```
+    
+Click on the link to the new repository provided in the message. 
+    
+Go to __Settings/Actions/Add Runner__ 
+```
+https://github.com/<username>/shr-private/settings/actions/add-new-runner 
+```
+    
+For __Operating System__: select `Linux`
+
+For __Architecture__: select `x64`
           
 ## Setup the Self-hosted runner
 The __Project Manager__ should access the __Build-Server__ to perform the following setup:
