@@ -109,7 +109,7 @@ Once the importing process is complete, a message will show up:
 Click on the link to the new repository provided in the message to go to the new repository.
 
 ### Adding a workflow
-On your `shr-private` repository, use the GitHub interface to add the following new file `.github/workflows/bx.yml`. This workflow contains a single job called "iarbuild" with 4 steps:
+On your `shr-private` repository, use the GitHub interface to add the following new file `.github/workflows/bx.yml`. This workflow contains a single job called "iarbuild" with 3 steps after the repository is checked out:
 ```yaml
 name: IAR Build Tools CI
 on:
