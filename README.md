@@ -233,7 +233,7 @@ The expected output is similar to this, but with a different commit hash:
 >  2 files changed, 5 insertions(+), 5 deletions(-)
 >```
 
-Finally publish these changes with `git push`, so the code changes go back to the `origin` repository:
+Finally publish these changes with `git push`, so the code changes go back to the __origin__ repository:
 ```
 git push --set-upstream origin dev-componentB
 ```
