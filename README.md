@@ -51,7 +51,7 @@ If the new feature fails, the follow-up can be performed within GitHub's facilit
 
 This CI repeats as many times as required.
 
-![](docs/pictures/bx-shr-devops-flow.png)
+![](docs/pictures/bx-github-ci.png)
 
 ## Conventions
 As this tutorial is intended to be flexible with respect to the tools and packages that can be used, it becomes important to establish some conventions for when referring to certain entities.
