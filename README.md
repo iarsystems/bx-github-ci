@@ -34,7 +34,7 @@ On his workstation, a _developer_ clones the repository to start working on a ne
 
 The _developer_ launches the [IAR Embedded Workbench][iar-ew-url], from where he can edit, build and debug the project.
 
-When the _developer_ is done with that, he can _push_ the branch to the __origin__ using his __git client__.
+When the _developer_ is done with that, he can, through his own GitHub account, _push_ the branch to the __origin__ using a __git client__.
 
 >:warning: Popular choices for Windows that provide a __git client__ are [Git for Windows][g4w-url] or [Ubuntu WSL][wsl-url].
 
@@ -170,14 +170,14 @@ git clone https://github.com/<username>/shr-private.git /mnt/c/shr-private && cd
     
 ### Switching to the `dev-componentB` feature branch        
     
-Now let's consider starting to work on a new feature for the `ComponentB`. Checkout a new branch named "dev-componentB"
+Now let's consider starting to work on a new feature for the `ComponentB`. Checkout a new branch named "dev-componentB", derived from the master branch:
 ```
-git checkout -b dev-componentB
+git checkout -b dev-componentB master
 ```
 
 Choose `File` > `Open Workspace...` and navigate to `C:\shr-project\<arch>`. You will find a `workspace.eww` file. Go ahead and __open__ it.
 
-This example workspace comes with three projects:
+This example workspace comes with 3 projects:
 * library
 * componentA
 * componentB
@@ -190,7 +190,7 @@ Unfold the __`componentB`__ project tree and double click on its [main.c](../wor
 
 Right-click on __`componentB`__ and choose `Make` (or <kbd>F7</kbd>). The `componentB` project should be built with no errors.
 
-### Changing the code for `componentB` project 
+### Changing the code for the `componentB` project 
 
 The __developer__ starts to work on the `dev-componentB` branch and, for illustrative purposes, the `DATATYPE` used in `componentB` had to change from `uint16_t` to __`float`__, for example, to hold values greater than `0xFFFF`.
 
@@ -220,7 +220,7 @@ Rebuild the `library` project using right-click on `library` and choose `Make` (
 Rebuild the `componentB` project using right-click on `componentB` and choose `Make` (or <kbd>F7</kbd>). It should build with no errors.
 
 ### Commit the changes
-Go back to the Git bash terminal.
+Go back to the terminal where you used your __git client__. 
 
 Commit to the changes to the tracked files in the cloned `shr-project` repository:
 ```
@@ -251,9 +251,10 @@ Push output example:
 > * [new branch]      dev-componentB -> dev-componentB
 >Branch 'dev-componentB' set up to track remote branch 'dev-componentB' from 'origin'.
 >```
-   
-## Creating a Pull Request
-Then it is time for the __Developer__ to go back to __GitHub.com__:
+
+    
+### Creating a Pull Request
+Then it is time for the __developer__ to go back his __GitHub.com__:
 
 * Go to `https://github.com/<username>/shr-private` and notice that there is a new yellow bar saying that
 ![](images/pr-compare.png)
