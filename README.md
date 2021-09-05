@@ -32,7 +32,7 @@ It will also use the [GitHub's Actions][gh-actions-url] workflow relying on its 
 ### Development workstation
 On his workstation, a _developer_ clones the repository to start working on a new feature. For that, he creates a __feature branch__.
 
-The _developer_ launches the [IAR Embedded Workbench][], from where he can edit, build and debug the project.
+The _developer_ launches the [IAR Embedded Workbench][iar-ew-url], from where he can edit, build and debug the project.
 
 When the _developer_ is done with that, he can _push_ the branch to the __origin__.
 
@@ -251,12 +251,13 @@ For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and th
 
 <!-- links -->
 [iar-bx-url]: https://www.iar.com/bx
+[iar-ew-url]: https://www.iar.com/products/architectures
 [iar-lms2-url]: https://links.iar.com/lms2-server
-[iar-bkpt-url]: https://www.iar.com/about/news-and-events/the-weekly-breakpoint-blog/
+[iar-bkpt-url]: https://www.iar.com/about/news-and-events/the-weekly-breakpoint-blog
 
 [gh-join-url]: https://github.com/join
-[gh-azure-url]: https://azure.microsoft.com/en-us/products/github/
-[gh-yml-doc-url]: https://github.com/
+[gh-azure-url]: https://azure.microsoft.com/en-us/products/github
+[gh-yml-doc-url]: https://github.com
 [gh-shr-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners 
 [gh-shr-priv-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories
 [gh-actions-url]: https://docs.github.com/en/actions
