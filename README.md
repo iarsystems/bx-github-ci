@@ -108,6 +108,7 @@ For __Operating System__: select `Linux`
 
 For __Architecture__: select `x64`
 
+    
 ## Setup the Self-hosted runner
 The __Project Manager__ should access the __Build-Server__ to perform the following setup:
 
@@ -287,6 +288,7 @@ For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url] and th
 [gh-actions-url]: https://docs.github.com/en/actions
 [gh-iar-url]: https://github.com/IARSystems
 
+[bx-workspaces-url]: https://github.com/IARSystems/bx-workspaces-ci
 [repo-wiki-url]: https://github.com/IARSystems/bx-github-ci
 [repo-new-issue-url]: https://github.com/IARSystems/bx-github-ci/issues/new
 [repo-old-issue-url]: https://github.com/IARSystems/bx-github-ci/issues?q=is%3Aissue+is%3Aopen%7Cclosed
