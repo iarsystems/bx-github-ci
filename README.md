@@ -10,14 +10,14 @@ If you end up with a question specifically related to [this tutorial](https://gi
 
 
 ## Introduction
-This tutorial provides a simple example with general guidelines on how to setup a CI (Continuous Integration) workflow with [IAR Build Tools for Linux][iar-bx-url] alongside [GitHub](https://github.com).
+This tutorial provides a simple example with general guidelines on how to set up a CI (Continuous Integration) workflow with [IAR Build Tools for Linux][iar-bx-url] alongside [GitHub](https://github.com).
 
 ### GitHub
 At GitHub, a private project repository, called __origin__ in the Git jargon, starts with a __master__ branch containing the __production__ code. 
 
 The repository also contains a "recipe" for the workflow under `.github/workflows`. The recipe is written in the __YAML__ format and can be customized. We provided one simple example as base, although the [official documentation][gh-yml-doc-url] can help with further customizations.
 
-The repository will be configured to use a GitHub's [self-hosted runner][gh-shr-url].
+The repository will be configured to use one GitHub's [self-hosted runner][gh-shr-url].
 
 >:warning: GitHub requires an [account][gh-join-url]. An [Azure][gh-azure-url] account also can be used.
 
@@ -25,7 +25,7 @@ The repository will be configured to use a GitHub's [self-hosted runner][gh-shr-
 ### Build server
 The __build server__ will be where the [__IAR Build Tools for Linux__][iar-bx-url] are installed.
 
-It will serve as a [self-hosted runners][gh-shr-url] from where the [GitHub's Actions][gh-actions-url] workflow will take place.  This runner will be configured to automatically connect to the __origin__. When triggered, the runner will execute a job that, after cloning the repository, will use the __IAR Build Tools for Linux__ to build these projects.
+It will serve as a [self-hosted runner][gh-shr-url] from where the [GitHub's Actions][gh-actions-url] workflow will take place.  This runner will be configured to automatically connect to the __origin__. When triggered, the runner will execute a job that, after cloning the repository, will use the __IAR Build Tools for Linux__ to build these projects.
 
 
 ### Development workstation
@@ -38,7 +38,7 @@ When the _developer_ is done with that, he can, through his own GitHub account, 
 >:warning: Popular choices for Windows that provide a __git client__ are [Git for Windows][g4w-url], [GitHub for Desktop][gh-gd-url] or even [Ubuntu WSL][wsl-url]. In this tutorial, we are going to use the git from the command-line.
 
 ### The typical CI workflow
-The objective is to have automated builds for keeping track of which changes break the build before they are introduced into the __master__ branch. This practice can help raising the project's overall quality matrics.
+The objective is to have automated builds for keeping track of which changes break the build before they are introduced into the __master__ branch. This practice can help raise the project's overall quality metrics.
 
 When a _developer_ pushes changes to the __origin__, __GitHub Actions__ comes into play and triggers an action to notify the runner in the _build server_ about the new _push_.
 
@@ -75,7 +75,7 @@ Here you will find some examples for different packages and their versions:
 | `<username>`    | Refer to the user's GitHub's account or the user's account in the local machine, according to the context.                    |
 
 ## Preparing the repository 
-Under the GitHub's account, we are going to import the [bx-workspaces-ci][bx-workspaces-url] repository. This is a public repository containing a collection of workspaces which were created using the IAR Embedded Workbench. They can be imported to become a private repository and then used for experimentation.
+Under GitHub's account, we are going to import the [bx-workspaces-ci][bx-workspaces-url] repository. This is a public repository containing a collection of workspaces which were created using the IAR Embedded Workbench. They can be imported to become a private repository and then used for experimentation.
 
 ### Importing an example repository
 Navigate to
@@ -289,12 +289,12 @@ The [bx-workspaces-ci][bx-workspaces-url] repository comes pre-loaded with a [wo
     
 Now a project's code reviewer can start [reviewing the pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/approving-a-pull-request-with-required-reviews) containing the proposed changes in the new feature.
 
-If a developer created something new that breaks the existing build, it will fail the automated verification. So a code reviewer can know imediatelly about the breakage and detail the root cause of the failure.
+If a developer created something new that breaks the existing build, it will fail the automated verification. So a code reviewer can know immediately about the breakage and detail the root cause of the failure.
 ![](docs/pictures/pr-build-fail.png)
 
 In this case, the author's proposed change to the shared `library` worked nicely for the `componentB` but it didn't for `componentA`. 
     
-The code reviewer can contact the author using `pull request` page, so it is easy to keep track of any ammends to the proposed code, until it is approved or rejected.
+The code reviewer can contact the author using `pull request` page, so it is easy to keep track of any amends to the proposed code, until it is approved or rejected.
 
 
 ## Summary
