@@ -44,7 +44,7 @@ When a _developer_ pushes changes to the __origin__, __GitHub Actions__ comes in
 
 On the build server, the runner will then execute the "recipe" to build the project with the __IAR Build Tools__. 
 
-If the new feature passes, the _project manager_ can decide if these changes are ready to be merged to the __master__ branch.
+If the new feature passes, the _code reviewer_ can decide if these changes are ready to be merged to the __master__ branch.
 
 If the new feature fails, the follow-up can be performed within GitHub's facilities for code revision.
 
