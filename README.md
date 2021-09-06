@@ -17,7 +17,7 @@ At GitHub, a private project repository, called __origin__ in the Git jargon, st
 
 The repository also contains a "recipe" for the workflow under `.github/workflows`. The recipe is written in the __YAML__ format and can be customized. We provided one simple example as base, although the [official documentation][gh-yml-doc-url] can help with further customizations.
 
-The repository will be configured to use a GitHub's [self-hosted-runner][gh-shr-url].
+The repository will be configured to use a GitHub's [self-hosted runner][gh-shr-url].
 
 >:warning: GitHub requires an [account][gh-join-url]. An [Azure][gh-azure-url] account also can be used.
 
