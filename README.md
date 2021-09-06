@@ -1,269 +1,333 @@
+<img align="right" src="docs/github-logo.png" />
+
 # Tutorial<br/>IAR Build Tools for Linux in a GitHub CI 
 
-### Objectives
-This tutorial provides a simplified example containing general setup guidelines on how a __GitHub Actions self-hosted runner__ can be used in a Continuous Integration (CI/CD) DevOps workflow when building projects with the [__IAR Build Tools__ on Linux hosts][iar-bx-url]. 
+Each of the __IAR Build Tools for Linux__ packages requires its specific license. Please feel free to [__contact us__](https://iar.com/about/contact) if you would like to learn how to get access to them.
 
-> __Notes__
-> * For more tutorials, stay tuned on our [__IAR Systems__ page on GitHub][gh-iar-url].
-> * If you have questions, you can always refer to the [__bx-self-hosted-runners wiki__][repo-wiki-url], or [here][repo-old-issue-url] for earlier questions. In case you have a new question, post it [here][repo-new-issue-url].
+If you want to be notified in your GitHub inbox about updates to this tutorial, you can start __watching__ this repository. You can customize which types of notification you want to get. Read more about [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications) and how to [customize](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications#customizing-notifications-and-subscriptions) them.
 
-### Requirements
-For this tutorial, the following will be required:
-
-* __Dev-Machine__: a __Windows 10__ build 1903+ with the following software installed:
-   - [__IAR Embedded Workbench for Arm 8.50.6__](https://www.iar.com/arm)
-   - [Git for Windows](https://git-scm.com/download/win) (includes _bash_)
- 
-* __Build-Server__: a __Ubuntu__ v18.04+ with the following software installed:
-    - [__IAR build tools for Arm 8.50.6__](https://www.iar.com/about/contact/sales/) (referred as `BXARM`)
- 
-* [__IAR License Server__][iar-lms2-url] already __up__, loaded with __activated__ `BXARM` licenses and __reachable__ from the __Build-Server__
-
-* __GitHub.com__:
-    - A [GitHub account][gh-join-url] (or a [Microsoft Azure account][gh-azure-url])
-    - A private GitHub git repository to store the project files
-    - A __Developer__
-    - A __Project Manager__ (who, for the current purposes, can temporarily assume the role of the __Developer__)
-
-### Additional Resources
-If you are new to CI/CD, Docker, Jenkins and Self-Hosted Runners or just want to learn more and see the IAR tools in action, you can find an useful selection of recorded webinars about automated building and testing in Linux-based environments [here!][iar-bx-url]
-
-## Table of Contents
-* [Introduction](#introduction)
-* [Prepare the repository](#prepare-the-repository)
-* [Setup the Self-hosted runner](#setup-the-self-hosted-runner)
-* [Develop the project](#develop-the-project)
-* [Creating a pull request](#creating-a-pull-request)
-* [Manage the code changes](#manage-the-code-changes)
-* [Summary](#summary)
+If you end up with a question specifically related to [this tutorial](https://github.com/iarsystems/bx-github-ci), you might be interested in verifying if it was already answered from [earlier questions][repo-old-issue-url]. Or, [ask a new question][repo-new-issue-url] if you could not find any answer for your question.
 
 
 ## Introduction
-For this tutorial, we are going to use the [GitHub's Self-hosted runners][gh-shr-url] to build a project on a local building machine while __GitHub Actions__ orchestrates the entire DevOps workflow for us.
+This tutorial provides a simple example with general guidelines on how to set up a CI (Continuous Integration) workflow with [IAR Build Tools for Linux][iar-bx-url] alongside [GitHub](https://github.com).
 
-On this DevOps workflow, we are going to create one [__private__][gh-shr-priv-url] repository hosted at __GitHub__ containing our project. 
+### GitHub
+At GitHub, a private project repository, called __origin__ in the Git jargon, starts with a __master__ branch containing the __production__ code. 
 
-The private repository will have a __`production`__ branch in which __only__ the __Project Manager__ should have the authority to approve code changes.
+The repository also contains a "recipe" for the workflow under `.github/workflows`. The recipe is written in the __YAML__ format and can be customized. We provided one simple example as base, although the [official documentation][gh-yaml-doc-url] can help with further customizations.
 
-A __Developer__ clones the repository with the __`production`__ branch and then create a feature branch named __`dev-<feature-name||bug-fix>`__ containing a new feature or a bug fix. Then he pushes the branch to the _Origin_. This will trigger a __GitHub Action__ to build the project using the __IAR Build Tools__ in a __Self-hosted runner__.
+The repository will be configured to use one GitHub's [self-hosted runner][gh-shr-url].
 
-This way we can make sure that a newly developed feature will not break the build. This scheme will improve the project's quality, and it will help the __Project Manager__ in the validation process while deciding which code changes are acceptable _and_ if it does integrate well to the __`production`-grade__ code base.
-
-![](images/bx-shr-devops-flow.png)
+>:warning: GitHub requires an [account][gh-join-url]. An [Azure][gh-azure-url] account also can be used.
 
 
-## Prepare the repository
-The first part of this tutorial assumes that the __Project Manager__ is already logged into his `https://github.com/<username>` in order to setup a private repository on GitHub. 
+### Build server
+The __build server__ will be where the [__IAR Build Tools for Linux__][iar-bx-url] are installed.
 
-Accelerating things a little bit, we are going to re-use this public repository as base template for the new private one since it comes with an __IAR Embedded Workbench workspace__ that the __Developer__ will, later on, be able to experiment with simulating a new feature implementation under a CI/CD paradigm.
+It will serve as a [self-hosted runner][gh-shr-url] from where the [GitHub's Actions][gh-actions-url] workflow will take place.  This runner will be configured to automatically connect to the __origin__. When triggered, the runner will execute a job that, after cloning the repository and will use the __IAR Build Tools for Linux__ to build these projects.
 
-* On __GitHub.com__, import [this repository](https://github.com/IARSystems/bx-self-hosted-runners)
-    - into a [new private repository](https://github.com/new/import)
-    - __Name__ `shr-private`
-    - __Privacy__ `Private`
-    - Click __Begin import__
 
-* Once the _importing is complete_, a message will show up:
+### Development workstation
+On his workstation, a _developer_ clones the repository to start working on a new feature for some project. For that, he creates a __feature branch__.
+
+The _developer_ then launches the [IAR Embedded Workbench][iar-ew-url], from where he can __code__, __build__ and __debug__ the project.
+
+When the _developer_ is done with that, he can, through his own GitHub account, _push_ the branch to the __origin__ using a __git client__.
+
+>:warning: Popular choices for Windows that provide a __git client__ are [Git for Windows][g4w-url], [GitHub for Desktop][gh-gd-url] or even [Ubuntu WSL][wsl-url]. In this tutorial, we are going to use the git from the command-line.
+
+### The typical CI workflow
+The objective is to have automated builds for keeping track of which changes break the build before they are introduced into the __master__ branch. This practice can help raise the project's overall quality metrics.
+
+When a _developer_ pushes changes to the __origin__, __GitHub Actions__ comes into play and triggers an action to notify the runner in the __build server__ about the new __push__.
+
+On the build server, the runner will then execute the "recipe" to build the project with the __IAR Build Tools__. 
+
+If the new feature passes, the _code reviewer_ can decide if these changes are ready to be merged to the __master__ branch.
+
+If the new feature fails, the follow-up can be performed within GitHub's facilities for code revision.
+
+This CI repeats as many times as required.
+
+![](docs/pictures/bx-github-ci.png)
+
+## Conventions
+As this tutorial is intended to be flexible with respect to the tools and packages that can be used, it becomes important to establish some conventions for when referring to certain entities.
+
+### Packages
+| __Placeholder__ | __Meaning__                                                                               |
+| :-------------- | :---------------------------------------------------------------------------------------- |
+| `<arch>`        | __Architecture__<br/>Valid: `arm`, `riscv`, `rh850`, `rl78`, `rx`                         |
+| `<package>`     | __Product package__<br/>Valid: `arm`, `armfs`, `riscv`, `rh850`, `rh850fs`, `rl78`, `rx`  |
+| `<version>`     | __Package version__<br/>Valid: `major`.`minor`.`patch` `[.build]`                         |
+
+Here you will find some examples for different packages and their versions:
+| __Package/Version__       | __Replace with__                                                                                                                               |
+| :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| BXARM 9.10.1              | IAR Build Tools for Arm version 9.10.1<br/>`<arch>`=`arm`<br/>`<package>`=`arm`<br/>`<version>`=`9.10.1`                                       |
+| BXARMFS 8.50.10.35167     | IAR Build Tools for Arm, [Functional Safety Edition](https://www.iar.com/products/requirements/functional-safety/), version 8.50.10<br/>`<arch>`=`arm`<br/>`<package>`=`armfs`<br/>`<version>`=`8.50.10.35167` |
+| BXRISCV 1.40.1            | IAR Build Tools for RISC-V version 1.40.1<br/>`<arch>`=`riscv`<br/>`<package>`=`riscv`<br/>`<version>`=`1.40.1`                                |
+
+### Others
+| __Placeholder__ | __Meaning__                                                                               |
+| :-------------- | :---------------------------------------------------------------------------------------- |
+| `<username>`    | Refer to the user's GitHub's account or the user's account in the local machine, according to the context.                    |
+
+## Preparing the repository 
+Under GitHub's account, we are going to import the [bx-workspaces-ci][bx-workspaces-url] repository. This is a public repository containing a collection of workspaces which were created using the IAR Embedded Workbench. They can be imported to become a private repository and then used for experimentation with the IAR Build Tools for Linux.
+
+### Importing an example repository
+Navigate to
 ```
-"Your new repository '<username>/shr-private' is ready."
+https://github.com/new/import
 ```
-* Click on that link to the new repository in the message.
 
-* Go to __Settings__ 
-> Equivalent URL: `https://github.com/<username>/shr-private/settings`
-
-* And then __Actions__ 
-> Equivalent URL: `https://github.com/<username>/shr-private/settings/actions`
-
-* On the bottom of the page, click __`Add Runner`__
-> Equivalent URL: `https://github.com/<username>/shr-private/settings/actions/add-new-runner`
-
-* For __Operating System__ 
-   - Select `Linux`
-
-* For __Architecture__ 
-   - Select `x64`
-          
-## Setup the Self-hosted runner
-The __Project Manager__ should access the __Build-Server__ to perform the following setup:
-
-### Install the `BXARM` build tools
-Install the IAR Build Tools for Arm 8.50.6 (`BXARM`) on the __Build-Server__ as follows:
-```sh 
-# Setup the BXARM with dpkg 
-$ sudo dpkg --install <path-to>/bxarm-8.50.6.deb
-
-# Initialize the IAR License Manager on the Build-Server
-$ sudo /opt/iarsystems/bxarm-8.50.6/common/bin/lightlicensemanager init
-
-# Setup the license on the Build-Server
-$ /opt/iarsystems/bxarm-8.50.6/common/bin/lightlicensemanager setup -s <IAR.License.Server.IP.address> 
+Fill __Your old repository's clone URL__ with
 ```
-> __Notes__
-> * Additionally, it is possible to add the `BXARM` directories containing the executables on the search `PATH`, so they can be executed from anywhere.
->
-> For example:
-> ```sh
-> # Append it to the $HOME/.profile (or the $HOME/.bashrc) file
->
-> # If BXARM 8.50.6 is installed, set PATH so it includes its bin folders
-> if [ -d "/opt/iarsystems/bxarm-8.50.6" ]; then
->   PATH="/opt/iarsystems/bxarm-8.50.6/arm/bin:/opt/iarsystems/bxarm-8.50.6/common/bin:$PATH"
-> fi
-> ```
-> * Alternatively, it is possible to use the __IAR Build Tools__ directly from a __Docker Container__ in a transparent manner. Jump to our [Docker images for IAR Build tools on Linux hosts][gh-bxarm-docker-url] tutorial for further details. 
+https://github.com/IARSystems/bx-workspaces-ci
+```
 
-### Configure the GitHub Actions runner
-Then follow the GitHub's instructions for...
+On __Your new repository details__, fill with the new name. For this example, let's use `shr-private`:
+```
+shr-private
+```
 
-* __Download__
+Make sure that __Privacy__ is set to `private`.
 
-and
+>:warning: GitHub adverts against using self-hosted runners with public repositories due [security reasons][gh-shr-priv-url]. 
 
-* __Configure__
+Finally, click __Begin import__.
 
-...your self-hosted runner, using its default configurations.
+Once the importing process is complete, a message will show up:
+>```
+>"Your new repository `<username>/shr-private` is ready."
+>```
+    
+Click on the link to the new repository provided in the message to go to the new repository.
 
-> __Tip__
-> * You can move the mouse pointer to each desired line in the sequence and click on the __clipboard icon__ to copy it to the clipboard and then paste it to the terminal of your __Build-Server__.
+### Adding a workflow
+On your `shr-private` repository, use the GitHub interface to add the following new file `.github/workflows/bx.yaml`. This workflow contains a single job that runs on a __self-hosted runner__ called "iarbuild" with 3 steps to build the projects in the sequence `library`, `componentA` and `componentB`, after the repository is checked out:
+```yaml
+name: IAR Build Tools CI
+on:
+  push:
+    branches: [ dev* ]
+env:
+  BUILD_TYPE: Debug  
+  IARBUILD_PATH: /opt/iarsystems/bx<package>-<version>/common/bin
+  IARBUILD_OPTS: -log all -parallel 2
+jobs:
+  iarbuild:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Library
+        run: $IARBUILD_PATH/iarbuild ./<arch>/library/library.ewp       -build $BUILD_TYPE $IARBUILD_OPTS
+      - name: Build Component A
+        run: $IARBUILD_PATH/iarbuild ./<arch>/componentA/componentA.ewp -build $BUILD_TYPE $IARBUILD_OPTS
+      - name: Build Component B
+        run: $IARBUILD_PATH/iarbuild ./<arch>/componentB/componentB.ewp -build $BUILD_TYPE $IARBUILD_OPTS    
+```
+>:warning: Change `<arch>`, `<package>` and `<version>` to match with the __IAR Build Tools for Linux__ you are using. Please refer to [Conventions](#conventions) for details.
 
-Once you have it configurated, the Actions configuration page (`https://github.com/<username>/shr-private/settings/actions`) should show the __Self-hosted runner__ as `Idle`:
-![](images/shr-idle.png)
+### Adding a runner to the repository
+The GitHub repository must be set to use a __runner__.
 
-## Develop the project
-As soon as the preliminary setup is done, the __Project Manager__ can notify the __Developer__ about the new private repository for the project's CI/CD workflow.
+Go to __Settings/Actions/Runners/New__:
+```
+https://github.com/<username>/shr-private/settings/actions/runner/new
+```
 
-And then, on the __Dev-Machine__, the __Developer__ will perform the following:
+For __Operating System__: select __`Linux`__.
 
-* Launch __Bash for Git__ and then:
+For __Architecture__: select __`x64`__.
+
+Leave this page open.
+    
+## Setup the Build Server
+Go to the __build server__ and perform the following setup.
+
+### Setup the runner
+Use the GitHub's provided instructions for __Download__ and __Configure__ the self-hosted runner, using its default configurations.
+
+>:warning: By downloading and configuring the GitHub Actions Runner, you agree to the [GitHub Terms of Service](https://docs.github.com/github/site-policy/github-terms-of-service) or [GitHub Corporate Terms of Service](https://docs.github.com/github/site-policy/github-corporate-terms-of-service), as applicable.
+
+Once the runner is in place, go to the repository's __Settings/Actions__ page at:
+```
+https://github.com/<username>/shr-private/settings/actions
+```
+
+The status for the __Self-hosted runner__ should be `Idle` at this point:
+![](docs/pictures/shr-idle.png)
+
+### Install the IAR Build Tools for Linux
+Install the IAR Build Tools for Linux.
+
+>:warning: Follow the instructions and recommendations of the User Guide that comes with the product.
+
+Additionally, it is possible to add the __IAR Build Tools__ directories containing the executables to the search `PATH`, so they can be executed from anywhere without entering with their full path. This is not a requirement for this tutorial, but it might be convenient for some users.
+    
+For example, paste the snippet below to the user's `$HOME/.profile` (or else the `$HOME/.bashrc`) file:
 ```sh
-# Clone the "shr-private" repository
-$ git clone https://github.com/<username>/shr-private.git
-
-# Change to the repository directory
-$ cd shr-private
-
-# Checkout a new branch named "dev-component2-improvement"
-$ git checkout -b  dev-component2-improvement
+if [ -d "/opt/iarsystems/bx<package>-<version>" ]; then
+  PATH="/opt/iarsystems/bx<package>-<version>/<arch>/bin:/opt/iarsystems/bx<package>-<version>/common/bin:$PATH"
+fi
 ```
-> __Note__
-> * This repository comes prepared with a __GitHub Action [workflow](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions)__ configurated in the [bxarm.yml](.github/workflows/bxarm.yml) file to build all the 3 projects.
 
-* Launch the __IAR Embedded Workbench for Arm 8.50.6__ and
-   - Go to `File` → `Open Workspace...` and select the `workspace.eww` file inside the [workspace](workspace) folder. On the __Workspace__ window, the __`library`__ project should show up __highlighted__ as the active project. 
-   - Right-click on the __`library`__ project and choose `Make` (or <kbd>F7</kbd>). The `library` project should build with no errors.
-   - Now right-click on the `component2` project and __Set as Active__.
-   - Unfold the __`component2`__ project tree and double click on its [main.c](workspace/component2/main.c) file so it will open in the __Code Editor__.
-   - Right-click on __`component2`__ and choose `Make` (or <kbd>F7</kbd>). The `component2` project should build with no errors.
+>:warning: Change `<arch>`, `<package>` and `<version>` to match with the __IAR Build Tools for Linux__ you are using. Please refer to [Conventions](#conventions) for details.
 
-### Changing the code for `component2` project 
+After the file is saved, it is possible to source the file you modified so the changes take effect immediately. For example, 
+```
+source ~/.profile
+```
 
-Now the __Developer__ will start to work on the `dev-component2-improvement` and, for some reason the `DATATYPE` used in `component2` had to change from `uint16_t` to __`float`__ to hold values greater than `0xFFFF`.
 
-* On the [main.c](workspace/component2/main.c) file, right-click on the line with the __[`#include "library.h"`](workspace/component2/main.c#L12)__ and choose __Open "library.h"__.
+## Developing a Project
+Now that the server-side of the setup is done, let's start to try it from a __developer__'s perspective, from within the [Development workstation](#development-workstation).
 
-* In the [library.h](workspace/library/library.h) file, find the line __[`#define DATATYPE uint16_t`](workspace/library/library.h#L19)__ and replace it with
+
+### Cloning the repository    
+Launch the terminal which provides your __git client__ and clone the `shr-private` repository you imported into your `<username>` account:
+
+```
+git clone https://github.com/<username>/shr-private.git /mnt/c/shr-private && cd /mnt/c/shr-private
+```
+>:warning: For this tutorial we are assuming that the clone location will be the `C:\shr-private` folder.
+
+    
+### Switching to a feature branch        
+Now let's consider starting to work on a new feature for the `ComponentB`. Checkout a new branch named "dev-componentB", derived from the master branch:
+```
+git checkout -b dev-componentB master
+```
+
+In the __IAR Embedded Workbench IDE__ choose `File` → `Open Workspace...` and navigate to `C:\shr-project\<arch>`. You will find a `workspace.eww` file. Go ahead and __open__ it.
+
+This example workspace comes with 3 projects:
+* library
+* componentA
+* componentB
+
+Right-click on the __`library`__ project and choose `Make` (or <kbd>F7</kbd>). The `library` project should be built with no errors.
+
+Now right-click on the `componentB` project and __Set as Active__.
+
+Unfold the __`componentB`__ project tree and double click on its [main.c](../workspace/portable/componentB/main.c) file so it will open in the __Code Editor__.
+
+Right-click on __`componentB`__ and choose `Make` (or <kbd>F7</kbd>). The `componentB` project should be built with no errors.
+
+
+### Changing the code for the `componentB` project 
+The __developer__ starts to work on the `dev-componentB` branch and, for illustrative purposes, the `DATATYPE` used in `componentB` had to change from `uint16_t` to __`float`__, for example, to hold values greater than `0xFFFF`.
+
+On the [main.c](../workspace/portable/componentB/main.c) file, right-click on the line with the __[`#include "library.h"`](../workspace/portable/componentB/main.c#L12)__ and choose __Open "library.h"__.
+
+In the [library.h](../workspace/portable/library/library.h) file, find the line __[`#define DATATYPE uint16_t`](../workspace/portable/library/library.h#L19)__ and replace it with
 ```c
 #define DATATYPE float
 ```
-
-* Now rebuild the `library` project
-   - Right-click on `library` and choose `Make` (or <kbd>F7</kbd>). It should build with no errors.
-
-* And then rebuild the `component2` project
-   - Right-click on `component2` and choose `Make` (or <kbd>F7</kbd>). It should build with no errors.
-
-Back to the __Git Bash__
-
-* Commit to the changes to the cloned `shr-private` repository
-```sh
-# Stage the modified file for commit
-$ git add workspace/library/library.h
-
-# Commit the changes to the local "shr-private" repository
-$ git commit -m "Component 2 improvement proposal"
+  
+In the [main.c](../workspace/portable/componentB/main.c) file, update the constant `z` to `100000`.
+```c
+  const DATATYPE z = 100000;
 ```
 
-* The expected output is similar to this, but with a different commit hash:
-> ```
-> [dev-component2-improvement e167db8] Component 2 improvement proposal
-> 1 file changed, 1 insertion(+), 1 deletion(-)
-> ```
+On the same file, update the `debug_log()` function string format to handle the __float__ type. Change the formatted string from `%d` to `%f` as below:
+```c
+  debug_log("Sum = %f\r\n", sum);
+```
+and
+```c
+  debug_log("Mul = %f\r\n", mul);
+```
+  
+Rebuild the `library` project using right-click on `library` and choose `Make` (or <kbd>F7</kbd>). It should build with no errors.
 
-* Finally `push` the code changes back to the `origin` repository:
-```sh
-$ git push -u origin dev-component2-improvement
+Rebuild the `componentB` project using right-click on `componentB` and choose `Make` (or <kbd>F7</kbd>). It should build with no errors.
+
+>:warning: If you want, you can debug the project using `Project` → `Download & Debug` (or <kbd>CTRL</kbd>+<kbd>D</kbd>). The details of debugging a project are not going to be covered in this tutorial. For further details on debugging a project, refer to the `Help` → `C-SPY Debugging Guide` document that is shipped with the product.
+
+
+### Commit the changes
+Go back to the terminal where you used your __git client__. 
+
+Commit to the changes to the tracked files in the cloned `shr-project` repository:
+```
+git commit --all --message "Improvement proposal for componentB"
 ```
 
-The expected output is similar to:
-> ```
-> Enumerating objects: 9, done.
-> Counting objects: 100% (9/9), done.
-> Delta compression using up to 8 threads
-> Compressing objects: 100% (5/5), done.
-> Writing objects: 100% (5/5), 1.07 KiB | 363.00 KiB/s, done.
-> Total 5 (delta 4), reused 0 (delta 0), pack-reused 0
-> remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
-> remote:
-> remote: Create a pull request for 'dev-component2-improvement' on GitHub by visiting:
-> remote:      https://github.com/<username>/shr-private/pull/new/dev-component2-improvement
-> remote:
-> To github.com:<username>/shr-private.git
->  * [new branch]      dev-component2-improvement -> dev-component2-improvement
-> Branch 'dev-component2-improvement' set up to track remote branch 'dev-component2-improvement' from 'origin'.
-> ```
-   
+The expected output is similar to this, but with a different commit hash:
+>```
+>[dev-componentB 5b03ed8] Improvement proposal for componentB
+>  2 files changed, 5 insertions(+), 5 deletions(-)
+>```
+
+Finally publish these changes with `git push`, so the code changes go back to the __origin__ repository:
+```
+git push --set-upstream origin dev-componentB
+```
+
 ## Creating a Pull Request
-Then it is time for the __Developer__ to go back to __GitHub.com__:
+Then it is time for the __developer__ to go back his __GitHub.com__:
 
-* Go to `https://github.com/<username>/shr-private` and notice that there is a new yellow bar saying that
-![](images/pr-compare.png)
+Go to `https://github.com/<username>/shr-private` and notice that there is a new yellow banner on the top
+![](docs/pictures/pr-compare.png)
 
-* Click `Compare & pull request`
+Click `Compare & pull request`.
 
-* Here, GitHub will give the __Developer__ the opportunity to write the rationale for the `component2` improvement proposal so the __Project Manager__ can have a better picture of what is going on
-![](images/pr-rationale.png)
+Here, GitHub will give you the opportunity to write an explanation of the new feature you are pushing for the `componentB` project. That way, the code reviewer can have a better picture of what is going on.
 
-* Once ready, click `Create pull request`
+![](docs/pictures/pr-rationale.png)
 
-> __Tip__
-> * Follow the link to learn more [About pull requests](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
+Once ready, click `Create pull request`.
 
-
+>:warning: Follow the link to learn more [about pull requests](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
+    
+    
 ## Reviewing the Pull Request
-It is time for the __Project Manager__ to start [reviewing the pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/approving-a-pull-request-with-required-reviews) which was proposed by the __Developer__ containing the new feature.
+The [bx-workspaces-ci][bx-workspaces-url] repository comes pre-loaded with a [workflow][gh-actions-url] configured in the [`.github/workflows/bx.yml`](#adding-a-workflow) file that will trigger the notification the runner in the __build server__ needs to build all the 3 projects automatically when a new feature branch goes through a pull request.
+    
+Now a project's code reviewer can start [reviewing the pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/approving-a-pull-request-with-required-reviews) containing the proposed changes in the new feature.
 
-Our basic GitHub Actions workflow file bxarm.yml will trigger every time a new feature branch goes through a pull request.
+With the right workflow for a project, if some developer created something new that breaks the existing build, it will fail the automated verification. So a code reviewer can know immediately about the breakage and its details.
 
-Once it is triggered, it will use the __IAR Build Tools__ installed in the __Build Server__ alongside the runner deamon listening for new jobs.
+![](docs/pictures/pr-build-fail.png)
 
-If a __Developer__ created something new that breaks the build, it will fail the automated verification, warn the __Project Manager__ about the breakage and detail the root cause of the failure.
-![](images/pr-build-fail.png)
-
-In this case, the author's proposed change to the shared `library` worked nicely for the `component2` but it has broken the `component1` build.
-
-The __Project Manager__ can now contact the author using the `pull request` itself to keep track of any changes, propose alternatives or even fix other components of the project which might had lurking bugs and which no one else noticed for a while.
-
-Over time this practice helps guaranteeing convergence to improved quality of the `production`-grade code base. It also helps avoiding that new features break other parts of a project. Ultimately it builds a development log of the project which, when properly used, can become a solid asset for consistent deliveries as the project evolves.
+In this case, the author's proposed change to the shared `library` worked nicely for `componentB` but it didn't for `componentA`. 
+    
+The code reviewer can contact the author using `pull request` page, so it is easy to keep track of any amends to the proposed code, until it is approved or rejected.
 
 
 ## Summary
-And that is how it can be done. Building a dedicated self-hosted GitHub Action runner might be a good solution for CI/CD workflows depending on your requirements. 
 
-Keep in mind that this tutorial was created to inspire you and your team with one example taken from many other combinations that orchestrates DevOps CI/CD workflows to build firmware projects with our [IAR Build Tools][iar-bx-url].  For more tutorials, stay tuned on our [GitHub page][gh-iar-url]. As always, this tutorial is __not__ a replacement for the all the aforementioned tools' documentation. 
+In short, in this tutorial we went through one of the many ways that the [IAR Build Tools for Linux][iar-bx-url] can be used in CI scenarios.
 
+Over time, a practice like this can help guaranteeing convergence to improved quality of the production grade code base. It also helps avoiding that new features break other parts of a project. Ultimately it builds a development log of the project which, when properly used, can become a solid asset for consistent deliveries as the project evolves.    
+    
+The IAR Build Tools for Linux along with the GitHub CI provides a great and scalable way to manage automation tasks for building, and analyzing embedded software projects. Hence it might be suitable for many use cases.
+   
+For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url].
 
 <!-- links -->
 [iar-bx-url]: https://www.iar.com/bx
-[iar-lms2-url]: https://www.iar.com/support/tech-notes/licensing/iar-license-server-tools-lms2/
+[iar-ew-url]: https://www.iar.com/products/architectures
+[iar-lms2-url]: https://links.iar.com/lms2-server
+[iar-bkpt-url]: https://www.iar.com/about/news-and-events/the-weekly-breakpoint-blog
 
 [gh-join-url]: https://github.com/join
-[gh-azure-url]: https://azure.microsoft.com/en-us/products/github/
+[gh-azure-url]: https://azure.microsoft.com/en-us/products/github
+[gh-yaml-doc-url]: https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions
 [gh-shr-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners 
 [gh-shr-priv-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories
+[gh-actions-url]: https://docs.github.com/en/actions
+[gh-gd-url]: https://desktop.github.com/
 [gh-iar-url]: https://github.com/IARSystems
-[gh-bxarm-docker-url]: https://github.com/IARSystems/bxarm-docker
+    
+[g4w-url]: https://git-scm.com/download/win
+[wsl-url]: https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71
 
-[repo-wiki-url]: https://github.com/IARSystems/bx-self-hosted-runners
-[repo-new-issue-url]: https://github.com/IARSystems/bx-self-hosted-runners/issues/new
-[repo-old-issue-url]: https://github.com/IARSystems/bx-self-hosted-runners/issues?q=is%3Aissue+is%3Aopen%7Cclosed
+[bx-workspaces-url]: https://github.com/IARSystems/bx-workspaces-ci
+[repo-wiki-url]: https://github.com/IARSystems/bx-github-ci
+[repo-new-issue-url]: https://github.com/IARSystems/bx-github-ci/issues/new
+[repo-old-issue-url]: https://github.com/IARSystems/bx-github-ci/issues?q=is%3Aissue+is%3Aopen%7Cclosed
