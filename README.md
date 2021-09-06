@@ -107,7 +107,7 @@ Once the importing process is complete, a message will show up:
 Click on the link to the new repository provided in the message to go to the new repository.
 
 ### Adding a workflow
-On your `shr-private` repository, use the GitHub interface to add the following new file `.github/workflows/bx.yaml`. This workflow contains a single job for a __self-hosted runner__ called "iarbuild" with 3 steps to build the projects in the sequence `library`, `componentA` and `componentB`, after the repository is checked out:
+On your `shr-private` repository, use the GitHub interface to add the following new file `.github/workflows/bx.yaml`. This workflow contains a single job that runs on a __self-hosted runner__ called "iarbuild" with 3 steps to build the projects in the sequence `library`, `componentA` and `componentB`, after the repository is checked out:
 ```yaml
 name: IAR Build Tools CI
 on:
