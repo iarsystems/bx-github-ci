@@ -40,7 +40,7 @@ When the _developer_ is done with that, he can, through his own GitHub account, 
 ### The typical CI workflow
 The objective is to have automated builds for keeping track of which changes break the build before they are introduced into the __master__ branch. This practice can help raise the project's overall quality metrics.
 
-When a _developer_ pushes changes to the __origin__, __GitHub Actions__ comes into play and triggers an action to notify the runner in the _build server_ about the new _push_.
+When a _developer_ pushes changes to the __origin__, __GitHub Actions__ comes into play and triggers an action to notify the runner in the __build server__ about the new __push__.
 
 On the build server, the runner will then execute the "recipe" to build the project with the __IAR Build Tools__. 
 
