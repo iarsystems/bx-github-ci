@@ -13,7 +13,7 @@ If you end up with a question specifically related to [this tutorial](https://gi
 This tutorial provides a simple example with general guidelines on how to setup a CI (Continuous Integration) workflow with [IAR Build Tools for Linux][iar-bx-url] alongside [GitHub](https://github.com).
 
 ### GitHub
-At GitHub, a private project repository, called __origin__ in the Git jargon, starts with a __master__ branch containing the project's __production code__ base. 
+At GitHub, a private project repository, called __origin__ in the Git jargon, starts with a __master__ branch containing the __production__ code. 
 
 The repository also contains a "recipe" for the workflow under `.github/workflows`. The recipe is written in the __YAML__ format and can be customized. We provided one simple example as base, although the [official documentation][gh-yml-doc-url] can help with further customizations.
 
