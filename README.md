@@ -276,7 +276,7 @@ Go to `https://github.com/<username>/shr-private` and notice that there is a new
 
 Click `Compare & pull request`.
 
-Here, GitHub will give you the opportunity to write an explanation of the new feature you are pushing for the `componentB` project. That way, the code reviewer can have a better picture of what is going on
+Here, GitHub will give you the opportunity to write an explanation of the new feature you are pushing for the `componentB` project. That way, the code reviewer can have a better picture of what is going on.
 
 ![](docs/pictures/pr-rationale.png)
 
