@@ -1,0 +1,3 @@
+[submodule "workspace"]
+	path = workspace
+	url = https://github.com/iarsystems/bx-workspaces-ci.git
