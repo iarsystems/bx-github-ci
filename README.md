@@ -95,7 +95,7 @@ shr-private
 
 Make sure that __Privacy__ is set to `private`.
 
->:warning: GitHub adverts against using self-hosted runners on public repositories due [security reasons][gh-shr-priv-url]. 
+>:warning: GitHub adverts against using self-hosted runners with public repositories due [security reasons][gh-shr-priv-url]. 
 
 Finally, click __Begin import__.
 
