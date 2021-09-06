@@ -15,7 +15,7 @@ This tutorial provides a simple example with general guidelines on how to set up
 ### GitHub
 At GitHub, a private project repository, called __origin__ in the Git jargon, starts with a __master__ branch containing the __production__ code. 
 
-The repository also contains a "recipe" for the workflow under `.github/workflows`. The recipe is written in the __YAML__ format and can be customized. We provided one simple example as base, although the [official documentation][gh-yml-doc-url] can help with further customizations.
+The repository also contains a "recipe" for the workflow under `.github/workflows`. The recipe is written in the __YAML__ format and can be customized. We provided one simple example as base, although the [official documentation][gh-yaml-doc-url] can help with further customizations.
 
 The repository will be configured to use one GitHub's [self-hosted runner][gh-shr-url].
 
@@ -107,7 +107,7 @@ Once the importing process is complete, a message will show up:
 Click on the link to the new repository provided in the message to go to the new repository.
 
 ### Adding a workflow
-On your `shr-private` repository, use the GitHub interface to add the following new file `.github/workflows/bx.yml`. This workflow contains a single job called "iarbuild" with 3 steps to build the projects in the sequence `library`, `componentA` and `componentB`, after the repository is checked out:
+On your `shr-private` repository, use the GitHub interface to add the following new file `.github/workflows/bx.yaml`. This workflow contains a single job called "iarbuild" with 3 steps to build the projects in the sequence `library`, `componentA` and `componentB`, after the repository is checked out:
 ```yaml
 name: IAR Build Tools CI
 on:
@@ -317,7 +317,7 @@ For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url].
 
 [gh-join-url]: https://github.com/join
 [gh-azure-url]: https://azure.microsoft.com/en-us/products/github
-[gh-yml-doc-url]: https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions
+[gh-yaml-doc-url]: https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions
 [gh-shr-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners 
 [gh-shr-priv-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories
 [gh-actions-url]: https://docs.github.com/en/actions
