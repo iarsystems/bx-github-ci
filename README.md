@@ -1,4 +1,4 @@
-# Tutorial: Self-hosted runners for the IAR Build Tools on Linux hosts
+# Tutorial<br/>IAR Build Tools for Linux in a GitHub CI 
 
 ### Objectives
 This tutorial provides a simplified example containing general setup guidelines on how a __GitHub Actions self-hosted runner__ can be used in a Continuous Integration (CI/CD) DevOps workflow when building projects with the [__IAR Build Tools__ on Linux hosts][iar-bx-url]. 
