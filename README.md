@@ -290,6 +290,7 @@ The [bx-workspaces-ci][bx-workspaces-url] repository comes pre-loaded with a [wo
 Now a project's code reviewer can start [reviewing the pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/approving-a-pull-request-with-required-reviews) containing the proposed changes in the new feature.
 
 With the right workflow for a project, if some developer created something new that breaks the existing build, it will fail the automated verification. So a code reviewer can know immediately about the breakage and its details.
+<br>
 ![](docs/pictures/pr-build-fail.png)
 
 In this case, the author's proposed change to the shared `library` worked nicely for `componentB` but it didn't for `componentA`. 
