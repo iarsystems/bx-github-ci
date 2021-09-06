@@ -292,7 +292,7 @@ Now a project's code reviewer can start [reviewing the pull request](https://doc
 If a developer created something new that breaks the existing build, it will fail the automated verification. So a code reviewer can know immediately about the breakage and detail the root cause of the failure.
 ![](docs/pictures/pr-build-fail.png)
 
-In this case, the author's proposed change to the shared `library` worked nicely for the `componentB` but it didn't for `componentA`. 
+In this case, the author's proposed change to the shared `library` worked nicely for `componentB` but it didn't for `componentA`. 
     
 The code reviewer can contact the author using `pull request` page, so it is easy to keep track of any amends to the proposed code, until it is approved or rejected.
 
