@@ -115,7 +115,7 @@ on:
     branches: [ dev* ]
 env:
   BUILD_TYPE: Debug  
-  IARBUILD_PATH: /opt/iarsystems/bx<arch>/common/bin
+  IARBUILD_PATH: /opt/iarsystems/bx<package>-<version>/common/bin
   IARBUILD_OPTS: -log all -parallel 2
 jobs:
   iarbuild:
@@ -129,7 +129,7 @@ jobs:
       - name: Build Component B
         run: $IARBUILD_PATH/iarbuild ./<arch>/componentB/componentB.ewp -build $BUILD_TYPE $IARBUILD_OPTS    
 ```
->:warning: Change `<arch>` to the one that suits the __IAR Build Tools__ option you are using.
+>:warning: Change `<arch>`, `<package>` and `<version>` to match with the __IAR Build Tools for Linux__ you are using. Please refer to [Conventions](#conventions) for details.
 
 ### Adding a runner to the repository
 The GitHub repository must be set to use a __runner__.
@@ -170,12 +170,12 @@ Additionally, it is possible to add the __IAR Build Tools__ directories containi
     
 For example, paste the snippet below to the user's `$HOME/.profile` (or else the `$HOME/.bashrc`) file:
 ```sh
-if [ -d "/opt/iarsystems/bx<arch>" ]; then
-  PATH="/opt/iarsystems/bx<arch>/<arch>/bin:/opt/iarsystems/bx<arch>/common/bin:$PATH"
+if [ -d "/opt/iarsystems/bx<package>-<version>" ]; then
+  PATH="/opt/iarsystems/bx<package>-<version>/<arch>/bin:/opt/iarsystems/bx<package>-<version>/common/bin:$PATH"
 fi
 ```
 
->:warning: Update the `bx<arch>` for the paths in a way they match the product you are using.
+>:warning: Change `<arch>`, `<package>` and `<version>` to match with the __IAR Build Tools for Linux__ you are using. Please refer to [Conventions](#conventions) for details.
 
 After the file is saved, it is possible to source the file you modified so the changes take effect immediately. For example, 
 ```
