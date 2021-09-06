@@ -38,7 +38,7 @@ When the _developer_ is done with that, he can, through his own GitHub account, 
 >:warning: Popular choices for Windows that provide a __git client__ are [Git for Windows][g4w-url], [GitHub for Desktop][gh-gd-url] or even [Ubuntu WSL][wsl-url]. In this tutorial, we are going to use the git from the command-line.
 
 ### The typical CI workflow
-The objective is to have automated builds for raising the project's overall quality matrics.
+The objective is to have automated builds for keeping track of which changes break the build before they are introduced into the __master__ branch. This practice can help raising the project's overall quality matrics.
 
 When a _developer_ pushes changes to the __origin__, __GitHub Actions__ come into play and triggers an action to notify the runner in the _build server_ about the new _push_.
 
