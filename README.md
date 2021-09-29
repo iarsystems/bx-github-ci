@@ -123,13 +123,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build Library
-        run: $IARBUILD_PATH/iarbuild ./<arch>/library/library.ewp       -build $BUILD_TYPE $IARBUILD_OPTS
+        run: $IARBUILD_PATH/iarbuild ./<package>/library.ewp    -build $BUILD_TYPE $IARBUILD_OPTS
       - name: Build Component A
-        run: $IARBUILD_PATH/iarbuild ./<arch>/componentA/componentA.ewp -build $BUILD_TYPE $IARBUILD_OPTS
+        run: $IARBUILD_PATH/iarbuild ./<package>/componentA.ewp -build $BUILD_TYPE $IARBUILD_OPTS
       - name: Build Component B
-        run: $IARBUILD_PATH/iarbuild ./<arch>/componentB/componentB.ewp -build $BUILD_TYPE $IARBUILD_OPTS    
+        run: $IARBUILD_PATH/iarbuild ./<package>/componentB.ewp -build $BUILD_TYPE $IARBUILD_OPTS    
 ```
->:warning: Change `<arch>`, `<package>` and `<version>` to match with the __IAR Build Tools for Linux__ you are using. Please refer to [Conventions](#conventions) for details.
+>:warning: Update `<package>` and `<version>` to match with the __IAR Build Tools for Linux__ you are using. Please refer to [Conventions](#conventions) for details.
 
 ### Adding a runner to the repository
 The GitHub repository must be set to use a __runner__.
