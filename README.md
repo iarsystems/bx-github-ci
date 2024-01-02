@@ -46,6 +46,10 @@ With GitHub Actions is straightforward to enable a self-hosted runner in a build
 - Select __`x64`__ for the __Architecture__.
 - Follow the instructions provided by GitHub.
 
+> __Note__
+> From the default installation, the runners become available organization-wide, for all its repositories. These can be [grouped and managed](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/managing-access-to-self-hosted-runners-using-groups) as desired.
+
+
 ### Hot hints
 - The instructions provided by GitHub when setting up a new runner will tell you how to `run.sh` the script, which will not survive a reboot. In order to install the runner as a service, refer to this [hint](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?platform=linux).
 
