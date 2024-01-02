@@ -54,13 +54,6 @@ How do I...
 
 In order to install the runner as a service, use this [hint](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?platform=linux).
 
-> ...*yata-yata* my license?
-
-Contact [IAR Customer Care](https://iar.com/knowledge/support/licensing-faq/).
-
-> ...*yata-yata* my IAR product?
-
-Contact [IAR Tech Support](https://iar.com/knowledge/support/request-technical-support/).
 
 ## Issues
 Use the public issue tracker:
@@ -69,6 +62,8 @@ Use the public issue tracker:
 
 Do not use the public issue tracker:
 - If you need technical support. The public issue tracker **is not a support forum**.
+- If you have license issues. Contact [IAR Customer Care](https://iar.com/knowledge/support/licensing-faq/).
+- If you have tools issues. Contact [IAR Tech Support](https://iar.com/knowledge/support/request-technical-support/).
 
 ## Summary
 This tutorial provided an overview on how to get started with the IAR Build Tools for Arm on Linux in GitHub Actions, from where development teams can immediately benefit from holistic feedbacks these modern workflows provide to quickly build, analyze, test and deploy with quality.
