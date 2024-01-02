@@ -28,7 +28,7 @@ Under your organization's GitHub account:
 - Go to [Import](https://github.com/new/import) repository.
 - Fill **Your old repository's clone URL** with this repository's URL.
 - Set the **Repository name** as of your liking.
-- Make it 🔘 **Private**. [Why?](gh-shr-priv-url)
+- Make it 🔘 **Private**. [Why?](https://docs.github.com/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories)
 - Finally click **Begin import**.
 
 Once the importing process is complete, a message will show up `Your new repository <organization>/<repo> is ready`. The message will provide a link to jump to the new repository.
