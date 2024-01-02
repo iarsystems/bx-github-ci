@@ -46,7 +46,7 @@ With GitHub Actions is straightforward enabling a self-hosted runner on a Linux 
 - Select the __`x64`__ __Architecture__.
 - Follow the GitHub-provided instructions on the page to download and configure the runner[^1].
 
-You can have as many parallel runners as your license allows you to. [Contact sales](https://iar.com/about/contact) for expanding your build capacity.
+You can have as many parallel build nodes with runners as your license allows you to. [Contact sales](https://iar.com/about/contact) for expanding your build capacity.
 
 ### FAQ
 How do I...
