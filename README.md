@@ -44,7 +44,7 @@ With GitHub Actions is straightforward to enable a self-hosted runner in a build
 - Navigate to your Organization's settings page to setup a new runner `https://github.com/<org>/settings/actions/runner/new`.
 - Select __`Linux`__ For __Operating System__.
 - Select __`x64`__ for the __Architecture__.
-- Follow the instructions provided by GitHub.
+- Follow the instructions provided by GitHub on the page to download and configure the runner.
 
 > __Note__
 > From the default installation, the runners become available organization-wide, for all its repositories. These can be [grouped and managed](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/managing-access-to-self-hosted-runners-using-groups) as desired.
