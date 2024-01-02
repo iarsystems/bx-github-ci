@@ -61,7 +61,7 @@ Contact [IAR Customer Care](https://iar.com/knowledge/support/licensing-faq/).
 Contact [IAR Tech Support](https://iar.com/knowledge/support/request-technical-support/).
 
 ## Issues
-Found an issue or have a suggestion specifically related to the [__bx-github-ci__][url-repo] tutorial? Feel free to use the public issue tracker.
+Found an issue or have a suggestion **specifically related to this** [__bx-github-ci__][url-repo] tutorial? Feel free to use the public issue tracker.
 - Do not forget to take a look at [earlier issues][url-repo-issue-old].
 - If creating a [new][url-repo-issue-new] issue, please describe it in detail.
 - The issue tracker is not a support forum.
