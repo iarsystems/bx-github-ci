@@ -3,8 +3,8 @@
 # IAR Build Tools for Arm on Linux in GitHub Actions
 
 
-## Disclaimer 
-The information provided in this tutorial is subject to change without notice and does not represent a commitment on any part of IAR. While the information contained herein is useful as reference for DevOps Engineers willing to implement CI/CD using IAR Tools, IAR assumes no responsibility for any errors, omissions or particular implementations.
+> __Disclaimer__
+> The information provided in this tutorial is subject to change without notice and does not represent a commitment on any part of IAR. While the information contained herein is useful as reference for DevOps Engineers willing to implement CI/CD using IAR Tools, IAR assumes no responsibility for any errors, omissions or particular implementations.
 
 
 ## Introduction
@@ -60,22 +60,16 @@ Found an issue or have a suggestion specifically related to the [__bx-github-ci_
 ## Summary
 This tutorial provided an overview on how to get started with the IAR Build Tools for Arm on Linux in GitHub Actions, from where development teams can immediately benefit from holistic feedbacks these modern workflows provide to quickly build, analyze, test and deploy with quality.
 
-[` Follow us `](https://github.com/iarsystems) on GitHub to get updates about tutorials like this and more.
+[__` Follow us `__](https://github.com/iarsystems) on GitHub to get updates about tutorials like this and more.
 
 <!-- links -->
 [iar-bxarm-url]: https://www.iar.com/bxarm
 
 [gh-yaml-doc-url]: https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions
 [gh-shr-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners 
-[gh-shr-priv-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories
 [gh-actions-url]: https://docs.github.com/en/actions
-[gh-gd-url]: https://desktop.github.com/
 [gh-iar-url]: https://github.com/IARSystems
-    
-[g4w-url]: https://git-scm.com/download/win
-[wsl-url]: https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71
 
-[bx-workspaces-url]: https://github.com/IARSystems/bx-workspaces-ci
-[repo-wiki-url]: https://github.com/IARSystems/bx-github-ci
+[url-repo]: https://github.com/IARSystems/bx-github-ci
 [url-repo-issue-new]: https://github.com/IARSystems/bx-github-ci/issues/new
 [url-repo-issue-old]: https://github.com/IARSystems/bx-github-ci/issues?q=is%3Aissue+is%3Aopen%7Cclosed
