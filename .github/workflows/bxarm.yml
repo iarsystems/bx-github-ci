@@ -2,7 +2,7 @@ name: BXARM on Linux
 
 on:
   push:
-    branches: [ main ]
+    branches: [ v2024.01 ]
     
 jobs:
   Checkout:
