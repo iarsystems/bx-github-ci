@@ -12,6 +12,7 @@ From a CI/CD perspective, the [IAR Build Tools for Arm](https://iar.com/bxarm) c
 
 In case you need an introduction on how to get started with GitHub, use [Quickstart](https://docs.github.com/en/get-started).
 
+
 ## Prerequisites
 Before you begin, you will need to download and install the following:
 - IAR Build Tools for Arm 9.50.1 for Ubuntu 22.04 x64 (`bxarm-9.50.1.deb`)
@@ -22,20 +23,10 @@ Before you begin, you will need to download and install the following:
    - or a GitHub [enterprise account](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#enterprise-accounts)
 
 
-### The typical CI workflow
-The objective is to have automated builds for keeping track of which changes break the build before they are introduced into the __master__ branch. This practice can help raise the project's overall quality metrics.
+## A pipeline example for embedded software
 
-When a _developer_ pushes changes to the __origin__, __GitHub Actions__ comes into play and triggers an action to notify the runner in the __build server__ about the new __push__.
+![image](https://github.com/felipe-iar/bx-github-ci/assets/54443595/3c27634b-3d6b-4407-91e5-7024a5c22c9b)
 
-On the build server, the runner will then execute the "recipe" to build the project with the __IAR Build Tools__. 
-
-If the new feature passes, the _code reviewer_ can decide if these changes are ready to be merged to the __master__ branch.
-
-If the new feature fails, the follow-up can be performed within GitHub's facilities for code revision.
-
-This CI repeats as many times as required.
-
-![](docs/pictures/bx-github-ci.png)
 
 ## Conventions
 As this tutorial is intended to be flexible with respect to the tools and packages that can be used, it becomes important to establish some conventions for when referring to certain entities.
