@@ -2,11 +2,15 @@
 
 # IAR Build Tools for Arm on Linux in GitHub Actions
 
+
 ## Disclaimer 
 The information provided in this tutorial is subject to change without notice and does not represent a commitment on any part of IAR. While the information contained herein is useful as reference for DevOps Engineers willing to implement CI/CD using IAR Tools, IAR assumes no responsibility for any errors, omissions or particular implementations.
 
+
 ## Introduction
-From a CI/CD perspective, the [IAR Build Tools for Arm](https://iar.com/bxarm) comes with everything you need to build embedded firmware projects from the command line. This tutorial provides a simple example with general guidelines on how to set up a CI/CD pipeline using [GitHub Actions](https://github.com/actions).
+From a CI/CD perspective, the [IAR Build Tools for Arm](https://iar.com/bxarm) comes with everything you need to build embedded firmware projects from the command line. This tutorial provides a simple example with general guidelines on how to set up a CI/CD pipeline using [GitHub Actions](https://docs.github.com/en/actions) while taking advantage of the so-called [GitHub self-hosted runners][gh-shr-url].
+
+In case you need an introduction on how to get started with GitHub, use [Quickstart](https://docs.github.com/en/get-started).
 
 ## Prerequisites
 Before you begin, you will need to download and install the following:
@@ -14,31 +18,9 @@ Before you begin, you will need to download and install the following:
    - IAR customers can download it directly from [IAR MyPages](https://iar.my.site.com/mypages). If you do not have a license, [contact sales](https://iar.com/about/contact).
 - CMake 3.22
    - https://cmake.org/download/
+- A GitHub [organization account](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#organization-accounts).
+   - or a GitHub [enterprise account](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#enterprise-accounts)
 
-### GitHub
-At GitHub, a private project repository, called [__origin__](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) in the Git jargon, starts with a __master__ branch containing the __production__ code. 
-
-The repository also contains a "recipe" for the workflow under `.github/workflows`. The recipe is written in the __YAML__ format and can be customized. We provided one simple example as base, although the [official documentation][gh-yaml-doc-url] can help with further customizations.
-
-The repository will be configured to use one GitHub's [self-hosted runner][gh-shr-url].
-
->:warning: GitHub requires an [account][gh-join-url]. An [Azure][gh-azure-url] account also can be used.
-
-
-### Build server
-The __build server__ will be where the [__IAR Build Tools for Linux__][iar-bx-url] are installed.
-
-It will serve as a [self-hosted runner][gh-shr-url] from where the [GitHub's Actions][gh-actions-url] workflow will take place.  This runner will be configured to automatically connect to the __origin__. When triggered, the runner will execute a job that, after cloning the repository and will use the __IAR Build Tools for Linux__ to build these projects.
-
-
-### Development workstation
-On his workstation, a _developer_ clones the repository to start working on a new feature for some project. For that, he creates a __feature branch__.
-
-The _developer_ then launches the [IAR Embedded Workbench][iar-ew-url], from where he can __code__, __build__ and __debug__ the project.
-
-When the _developer_ is done with that, he can, through his own GitHub account, _push_ the branch to the __origin__ using a __git client__.
-
->:warning: Popular choices for Windows that provide a __git client__ are [Git for Windows][g4w-url], [GitHub for Desktop][gh-gd-url] or even [Ubuntu WSL][wsl-url]. In this tutorial, we are going to use the git from the command-line.
 
 ### The typical CI workflow
 The objective is to have automated builds for keeping track of which changes break the build before they are introduced into the __master__ branch. This practice can help raise the project's overall quality metrics.
@@ -301,9 +283,12 @@ In this case, the author's proposed change to the shared `library` worked nicely
     
 The code reviewer can contact the author using `pull request` page, so it is easy to keep track of any amends to the proposed code, until it is approved or rejected.
 
+## Issues
+Found an issue or have a suggestion specifically related to the [__bx-github-ci__][url-repo] tutorial? Feel free to use the public issue tracker.
+- Do not forget to take a look at [earlier issues][url-repo-issue-old].
+- If creating a [new][url-repo-issue-new] issue, please describe it in detail.
 
 ## Summary
-
 In short, in this tutorial we went through one of the many ways that the [IAR Build Tools for Linux][iar-bx-url] can be used in CI scenarios.
 
 Over time, a practice like this can help guaranteeing convergence to improved quality of the production grade code base. It also helps avoiding that new features break other parts of a project. Ultimately it builds a development log of the project which, when properly used, can become a solid asset for consistent deliveries as the project evolves.    
@@ -313,13 +298,8 @@ The IAR Build Tools for Linux along with the GitHub CI provides a great and scal
 For more tutorials like this, stay tuned on our [GitHub page][gh-iar-url].
 
 <!-- links -->
-[iar-bx-url]: https://www.iar.com/bx
-[iar-ew-url]: https://www.iar.com/products/architectures
-[iar-lms2-url]: https://links.iar.com/lms2-server
-[iar-bkpt-url]: https://www.iar.com/about/news-and-events/the-weekly-breakpoint-blog
+[iar-bxarm-url]: https://www.iar.com/bxarm
 
-[gh-join-url]: https://github.com/join
-[gh-azure-url]: https://azure.microsoft.com/en-us/products/github
 [gh-yaml-doc-url]: https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions
 [gh-shr-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners 
 [gh-shr-priv-url]: https://docs.github.com/en/free-pro-team@latest/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories
