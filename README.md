@@ -35,7 +35,7 @@ Under your organization's GitHub account:
 Once the importing process is complete, a message will show up `Your new repository <organization>/<repo> is ready`. The message will provide a link to jump to the new repository.
 
 ## GitHub Actions pipeline example
-On your private repository, navigate to the [`.github/workflows/bxarm.yaml`](.github/workflows/bxarml.yaml) script. This file uses the [GitHub-flavored YAML syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions) to describe a pipeline containing multiple jobs found in a typical embedded firmware project. series of jobs relevant to the  job that runs on a __self-hosted runner__ called "iarbuild" with 3 steps to build the projects in the sequence `library`, `componentA` and `componentB`, after the repository is checked out:
+On your private repository, navigate to the [`.github/workflows/bxarm.yaml`](.github/workflows/bxarml.yaml) script. This file uses the [GitHub-flavored YAML syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions) to describe a pipeline containing multiple jobs found in a typical embedded firmware project.
 
 ![image](https://github.com/felipe-iar/bx-github-ci/assets/54443595/3c27634b-3d6b-4407-91e5-7024a5c22c9b)
 
