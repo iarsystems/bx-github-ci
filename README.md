@@ -40,7 +40,7 @@ On your private repository, navigate to the [`.github/workflows/bxarm.yaml`](.gi
 
 
 ## Adding runners to the organization
-With GitHub Actions is straightforward to enable a self-hosted runner in a build node which has the IAR Build Tools for Arm installed:
+With GitHub Actions is straightforward to enable a self-hosted runner in a Linux build node where the IAR Build Tools for Arm were installed:
 - Navigate to your Organization's settings page to setup a new runner `https://github.com/<org>/settings/actions/runner/new`.
 - Select __`Linux`__ as the __Operating System__.
 - Select the __`x64`__ __Architecture__.
