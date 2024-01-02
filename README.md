@@ -57,7 +57,7 @@ In order to install the runner as a service, use this [hint](https://docs.github
 
 ## Issues
 Use the public issue tracker:
-- If you found an issue or have a suggestion **specifically related to this tutorial**. Do not forget to take a look at [earlier issues][url-repo-issue-old].
+- If you found an issue or have a suggestion **specifically related to this tutorial**, do not forget to take a look at [earlier issues][url-repo-issue-old].
 - If creating a [new][url-repo-issue-new] issue, please describe it in detail.
 
 Do not use the public issue tracker:
