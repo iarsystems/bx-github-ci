@@ -46,6 +46,8 @@ With GitHub Actions is straightforward to enable a self-hosted runner in a build
 - Select __`x64`__ for the __Architecture__.
 - Follow the GitHub-provided instructions on the page to download and configure the runner[^1].
 
+You can have as many parallel runners as your license allows you to. [Contact sales](https://iar.com/about/contact) for expanding your build capacity.
+
 ### FAQ
 How do I...
 > ...make the runner to survive a reboot?
