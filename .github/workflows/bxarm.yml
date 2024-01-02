@@ -1,0 +1,62 @@
+name: BXARM on Linux
+
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  Checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+        with:
+          ref: ${{github.ref_name}}
+
+  Build:
+    needs: Checkout
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build          
+        run: |
+             echo Running ICCARM...
+
+  Static_Analysis:
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Static Analysis
+        run: |
+             echo Running C-STAT...
+
+  Runtime_Analysis:
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Runtime Analysis
+        run: |
+             echo Running C-RUN...
+             
+  Unit_Test:
+    needs: [Static_Analysis, Runtime_Analysis]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unit Test
+        run: |
+             echo Running C-SPY simulator...
+
+  On_Target_Test:
+    needs: [Static_Analysis, Runtime_Analysis]
+    runs-on: ubuntu-latest
+    steps:
+      - name: On-Target Test
+        run: |
+             echo Running C-SPY with i-jet...
+             
+  Deploy:
+    needs: [Unit_Test, On_Target_Test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        run: |
+             echo Deploying...
