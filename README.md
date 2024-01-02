@@ -44,14 +44,12 @@ With GitHub Actions is straightforward to enable a self-hosted runner in a build
 - Navigate to your Organization's settings page to setup a new runner `https://github.com/<org>/settings/actions/runner/new`.
 - Select __`Linux`__ For __Operating System__.
 - Select __`x64`__ for the __Architecture__.
-- Follow the instructions provided by GitHub on the page to download and configure the runner.
+- Follow the GitHub-provided instructions on the page to download and configure the runner[^1].
 
-> __Note__
-> From the default installation, the runners become available organization-wide, for all its repositories. These can be [grouped and managed](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/managing-access-to-self-hosted-runners-using-groups) as desired.
+### FAQ
+> How do I make the runner to survive a reboot?
 
-
-### Hot hints
-- The instructions provided by GitHub when setting up a new runner will tell you how to `run.sh` the script, which will not survive a reboot. In order to install the runner as a service, refer to this [hint](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?platform=linux).
+In order to install the runner as a service, use this [hint](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?platform=linux).
 
 
 ## Issues
@@ -64,6 +62,8 @@ Found an issue or have a suggestion specifically related to the [__bx-github-ci_
 This tutorial provided an overview on how to get started with the IAR Build Tools for Arm on Linux in GitHub Actions, from where development teams can immediately benefit from holistic feedbacks these modern workflows provide to quickly build, analyze, test and deploy with quality.
 
 [__` Follow us `__](https://github.com/iarsystems) on GitHub to get updates about tutorials like this and more.
+
+[^1]: From the default installation, the runners become available organization-wide, for all its repositories. These can be [grouped and managed](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/managing-access-to-self-hosted-runners-using-groups) as desired.
 
 <!-- links -->
 [iar-bxarm-url]: https://www.iar.com/bxarm
