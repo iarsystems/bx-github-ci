@@ -61,10 +61,11 @@ Contact [IAR Customer Care](https://iar.com/knowledge/support/licensing-faq/).
 Contact [IAR Tech Support](https://iar.com/knowledge/support/request-technical-support/).
 
 ## Issues
-Found an issue or have a suggestion **specifically related to this** [__bx-github-ci__][url-repo] tutorial? Feel free to use the public issue tracker.
-- Do not forget to take a look at [earlier issues][url-repo-issue-old].
+Use the public issue tracker:
+- If you found an issue or have a suggestion **specifically related to this tutorial**. Do not forget to take a look at [earlier issues][url-repo-issue-old].
 - If creating a [new][url-repo-issue-new] issue, please describe it in detail.
-- The issue tracker **is not a support forum**.
+Do not use the public issue tracker:
+- If you need technical support. The public issue tracker **is not a support forum**.
 
 ## Summary
 This tutorial provided an overview on how to get started with the IAR Build Tools for Arm on Linux in GitHub Actions, from where development teams can immediately benefit from holistic feedbacks these modern workflows provide to quickly build, analyze, test and deploy with quality.
