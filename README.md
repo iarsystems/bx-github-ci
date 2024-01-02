@@ -28,52 +28,14 @@ Before you begin, you will need to download and install the following:
 ![image](https://github.com/felipe-iar/bx-github-ci/assets/54443595/3c27634b-3d6b-4407-91e5-7024a5c22c9b)
 
 
-## Conventions
-As this tutorial is intended to be flexible with respect to the tools and packages that can be used, it becomes important to establish some conventions for when referring to certain entities.
-
-### Packages
-| __Placeholder__ | __Meaning__                                                                               |
-| :-------------- | :---------------------------------------------------------------------------------------- |
-| `<arch>`        | __Architecture__<br/>Valid: `arm`, `riscv`, `rh850`, `rl78`, `rx`                         |
-| `<package>`     | __Product package__<br/>Valid: `arm`, `armfs`, `riscv`, `rh850`, `rh850fs`, `rl78`, `rx`  |
-| `<version>`     | __Package version__<br/>Valid: `major`.`minor`.`patch` `[.build]`                         |
-
-Here you will find some examples for different packages and their versions:
-| __Package/Version__       | __Replace with__                                                                                                                               |
-| :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------- |
-| BXARM 9.10.1              | IAR Build Tools for Arm version 9.10.1<br/>`<arch>`=`arm`<br/>`<package>`=`arm`<br/>`<version>`=`9.10.1`                                       |
-| BXARMFS 8.50.10.35167     | IAR Build Tools for Arm, [Functional Safety Edition](https://www.iar.com/products/requirements/functional-safety/), version 8.50.10<br/>`<arch>`=`arm`<br/>`<package>`=`armfs`<br/>`<version>`=`8.50.10.35167` |
-| BXRISCV 1.40.1            | IAR Build Tools for RISC-V version 1.40.1<br/>`<arch>`=`riscv`<br/>`<package>`=`riscv`<br/>`<version>`=`1.40.1`                                |
-
-### Others
-| __Placeholder__ | __Meaning__                                                                               |
-| :-------------- | :---------------------------------------------------------------------------------------- |
-| `<username>`    | Refer to the user's GitHub's account or the user's account in the local machine, according to the context.                    |
-
 ## Preparing the repository 
-Under GitHub's account, we are going to import the [bx-workspaces-ci][bx-workspaces-url] repository. This is a public repository containing a collection of workspaces which were created using the IAR Embedded Workbench. They can be imported to become a private repository and then used for experimentation with the IAR Build Tools for Linux.
+Under your organization's GitHub account:
 
-### Importing an example repository
-Navigate to
-```
-https://github.com/new/import
-```
-
-Fill __Your old repository's clone URL__ with
-```
-https://github.com/IARSystems/bx-workspaces-ci
-```
-
-On __Your new repository details__, fill with the new name. For this example, let's use `shr-private`:
-```
-shr-private
-```
-
-Make sure that __Privacy__ is set to `private`.
-
->:warning: GitHub adverts against using self-hosted runners with public repositories due [security reasons][gh-shr-priv-url]. 
-
-Finally, click __Begin import__.
+- Go to [Import](https://github.com/new/import) repository.
+- Fill "Your old repository's clone URL" with this repository's URL.
+- Set the "Repository name" as of your liking.
+- Make it [x] Private. [Why?](gh-shr-priv-url)
+- Finally click "Begin import".
 
 Once the importing process is complete, a message will show up:
 >```
