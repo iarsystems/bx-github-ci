@@ -38,7 +38,7 @@ Once the importing process is complete, a message will show up `Your new reposit
 ## GitHub Actions pipeline example
 On your private repository, navigate to the [`.github/workflows/bxarm.yml`](.github/workflows/bxarm.yml) script. This file uses the [GitHub-flavored YAML syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions) to describe a pipeline containing multiple jobs found in a typical embedded firmware project.
 
-![image](https://github.com/felipe-iar/bx-github-ci/assets/54443595/3c27634b-3d6b-4407-91e5-7024a5c22c9b)
+![image](https://github.com/felipe-iar/bx-github-ci/assets/54443595/44e95077-e5a3-4d9b-91f6-5b3e3ccd2e43)
 
 
 ## Adding runners to the organization
