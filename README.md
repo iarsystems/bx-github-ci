@@ -18,6 +18,8 @@ Before you begin, you will need to download and install the following:
 - IAR Build Tools for Arm 9.50.1 for Ubuntu 22.04 x64 ([`bxarm-9.50.1.deb`](https://updates.iar.com/?product=BXARM&version=9.50))
    - IAR customers can download it directly from [IAR MyPages](https://iar.my.site.com/mypages). If you do not have a license, [contact sales](https://iar.com/about/contact).
 - [CMake 3.22+](https://cmake.org/download/) for the Linux x86_64 platform (***optional**).
+
+You also will need:
 - A GitHub [organization account](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#organization-accounts)
    - or a GitHub [enterprise account](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#enterprise-accounts).
 
