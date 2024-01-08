@@ -17,7 +17,6 @@ In case you need an introduction on how to get started with GitHub, use [Quickst
 Before you begin, you will need to download and install the following:
 - IAR Build Tools for Arm 9.50.1 for Ubuntu 22.04 x64 ([`bxarm-9.50.1.deb`](https://updates.iar.com/?product=BXARM&version=9.50))
    - IAR customers can download it directly from [IAR MyPages](https://iar.my.site.com/mypages). If you do not have a license, [contact sales](https://iar.com/about/contact).
-- [CMake 3.22+](https://cmake.org/download/) for the Linux x86_64 platform (***optional**).
 
 You also will need:
 - A GitHub [organization account](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#organization-accounts)
@@ -36,10 +35,11 @@ Under your organization's GitHub account:
 Once the importing process is complete, a message will show up `Your new repository <organization>/<repo> is ready`. The message will provide a link to jump to the new repository.
 
 ## GitHub Actions pipeline example
-On your private repository, navigate to the [`.github/workflows/bxarm.yml`](.github/workflows/bxarm.yml) script. This file uses the [GitHub-flavored YAML syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions) to describe a pipeline containing multiple jobs found in a typical embedded firmware project.
+On your private repository, navigate to the [`.github/workflows/bxarm.yml`](.github/workflows/bxarm.yml) workflow file. This file uses the [GitHub-flavored YAML syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions) to describe a pipeline containing multiple jobs found in a typical embedded firmware project.
 
-![image](https://github.com/felipe-iar/bx-github-ci/assets/54443595/44e95077-e5a3-4d9b-91f6-5b3e3ccd2e43)
+![image](https://github.com/felipe-iar/bx-github-ci/assets/54443595/8431a79c-257d-4d14-89d8-18638e63e526)
 
+Refer to the [`.github/workflows/bxarm.yml`](.github/workflows/bxarm.yml) workflow file for detailed comments.
 
 ## Adding runners to the organization
 With GitHub Actions is straightforward enabling a self-hosted runner on a Linux build node where the IAR Build Tools for Arm was installed:
