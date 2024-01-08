@@ -121,7 +121,7 @@ jobs:
           path: ./crun-messages.txt
           if-no-files-found: error
 
-  # Update `needs` to `build-project` if you do not have C-STAT and/or C-RUN enabled for your license
+# Update `needs` to `build-project` if you do not have C-STAT and/or C-RUN enabled for your license
   cspy-project-on-hw:
     needs: [ cstat-project, crun-project ]
     runs-on: [ self-hosted, linux ]
@@ -174,7 +174,7 @@ jobs:
           path: ./cspycomm.log
           if-no-files-found: error
 
-  # Update `needs` to `build-project` if you do not have C-STAT and/or C-RUN enabled for your license          
+# Update `needs` to `build-project` if you do not have C-STAT and/or C-RUN enabled for your license          
   deploy:
     needs: cspy-project-on-hw
     runs-on: [ self-hosted, linux ]
