@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspace>
+    <project>
+        <path>$WS_DIR$\ChecksumLibrary.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\project.ewp</path>
+    </project>
+    <batchBuild>
+        <batchDefinition>
+            <name>Build All</name>
+            <member>
+                <project>ChecksumLibrary</project>
+                <configuration>Debug</configuration>
+            </member>
+            <member>
+                <project>project</project>
+                <configuration>Debug</configuration>
+            </member>
+            <member>
+                <project>ChecksumLibrary</project>
+                <configuration>Release</configuration>
+            </member>
+            <member>
+                <project>project</project>
+                <configuration>Release</configuration>
+            </member>
+        </batchDefinition>
+        <batchDefinition>
+            <name>Build Debug</name>
+            <member>
+                <project>ChecksumLibrary</project>
+                <configuration>Debug</configuration>
+            </member>
+            <member>
+                <project>project</project>
+                <configuration>Debug</configuration>
+            </member>
+        </batchDefinition>
+        <batchDefinition>
+            <name>Build Release</name>
+            <member>
+                <project>ChecksumLibrary</project>
+                <configuration>Release</configuration>
+            </member>
+            <member>
+                <project>project</project>
+                <configuration>Release</configuration>
+            </member>
+        </batchDefinition>
+    </batchBuild>
+</workspace>
