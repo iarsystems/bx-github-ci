@@ -1,6 +1,6 @@
 <img align="right" src="https://avatars.githubusercontent.com/u/583231?s=96&v=4" />
 
-# IAR Build Tools for Arm on Linux in GitHub Actions
+# IAR Build Tools for Arm on GitHub Actions using Linux runners
 
 
 > __Disclaimer__
