@@ -1,8 +1,7 @@
 name: BXARM on Linux
 
-on:
-  push:
-    branches: [ master ]
+# This workflow will run when a push is made to any branch in the repository
+on: push
 
 # Workflow's environment variables can be referred by all jobs
 env:
