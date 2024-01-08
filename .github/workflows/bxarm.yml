@@ -1,15 +1,17 @@
 name: BXARM on Linux
+
 on:
   push:
     branches: [ master ]
 
+# Workflow's environment variables can be referred by all jobs
 env:
   TARGET_DIR: /opt/iarsystems/bxarm-9.50.1/arm/bin
   COMMON_DIR: /opt/iarsystems/bxarm-9.50.1/common/bin
 
 jobs:
   build-library:
-    runs-on: fae-emea-lnx
+    runs-on: [ self-hosted, linux ]
     steps:
       - uses: actions/checkout@v4
 
@@ -29,7 +31,7 @@ jobs:
           if-no-files-found: error
           
   cstat-library:
-    runs-on: fae-emea-lnx
+    runs-on: [ self-hosted, linux ]
     steps:
       - uses: actions/checkout@v4
           
@@ -47,7 +49,7 @@ jobs:
 
   build-project:
     needs: build-library
-    runs-on: fae-emea-lnx
+    runs-on: [ self-hosted, linux ]
     steps:
       - uses: actions/checkout@v4
       - name: Download library
@@ -66,10 +68,11 @@ jobs:
           name: project
           path: project/EWARM/Debug/Exe/project.out
           if-no-files-found: error
-          
+
+# Comment out the `cstat-project` job if your license has no IAR C-STAT for static code analysis
   cstat-project:
     needs: build-project
-    runs-on: fae-emea-lnx
+    runs-on: [ self-hosted, linux ]
     steps:
       - uses: actions/checkout@v4
       - name: Static Analysis
@@ -84,9 +87,10 @@ jobs:
           path: project/EWARM/project/C-STAT/*.html
           if-no-files-found: error
 
+# Comment out the `crun-project` job if your license has no IAR C-RUN for runtime analysis
   crun-project:
     needs: build-project
-    runs-on: fae-emea-lnx
+    runs-on: [ self-hosted, linux ]
     steps:
       - name: Download project
         uses: actions/download-artifact@v3
@@ -116,10 +120,11 @@ jobs:
           name: project-crun.txt
           path: ./crun-messages.txt
           if-no-files-found: error
-  
+
+  # Update `needs` to `build-project` if you do not have C-STAT and/or C-RUN enabled for your license
   cspy-project-on-hw:
     needs: [ cstat-project, crun-project ]
-    runs-on: fae-emea-lnx
+    runs-on: [ self-hosted, linux ]
     steps:
       - name: Download project
         uses: actions/download-artifact@v3
@@ -168,10 +173,11 @@ jobs:
           name: cspycomm.log
           path: ./cspycomm.log
           if-no-files-found: error
-          
+
+  # Update `needs` to `build-project` if you do not have C-STAT and/or C-RUN enabled for your license          
   deploy:
     needs: cspy-project-on-hw
-    runs-on: fae-emea-lnx
+    runs-on: [ self-hosted, linux ]
     steps:
       - name: Download ELF
         uses: actions/download-artifact@v3
