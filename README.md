@@ -70,7 +70,7 @@ Do not use the public issue tracker:
 - If you have tools issues. Contact [IAR Tech Support](https://iar.com/knowledge/support/request-technical-support/).
 
 ## Summary
-This tutorial provided an overview on how to get started with the IAR Build Tools for Arm on Linux in GitHub Actions, from where development teams can immediately benefit from holistic feedbacks these modern workflows provide to quickly build, analyze, test and deploy with quality.
+This tutorial provided an overview on how to get started with the IAR Build Tools for Arm on GitHub Actions using Linux runners, from where development teams can immediately benefit from holistic feedbacks these modern workflows provide to quickly build, analyze, test and deploy with quality.
 
 [__` Follow us `__](https://github.com/iarsystems) on GitHub to get updates about tutorials like this and more.
 
