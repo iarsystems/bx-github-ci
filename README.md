@@ -53,10 +53,9 @@ With GitHub Actions is straightforward enabling a self-hosted runner on a Linux 
 You can have as many parallel build nodes with runners as your license allows you to. [Contact sales](https://iar.com/about/contact) for expanding your build capacity.
 
 ### FAQ
-How do I...
-> ...make the runner to survive a reboot?
-
-In order to install the runner as a service, use this [hint](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?platform=linux).
+<details><summary><b>How do I make the runner to survive a reboot?</b></summary>
+In order to learn how to install the runner as a service, use this <a href=https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?platform=linux>link</a>.
+</details>
 
 
 ## Issues
