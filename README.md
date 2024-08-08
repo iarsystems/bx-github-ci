@@ -3,8 +3,8 @@
 # IAR Build Tools for Arm on GitHub Actions using Linux runners
 
 
-> __Disclaimer__
-> The information provided in this tutorial is subject to change without notice and does not represent a commitment on any part of IAR. While the information contained herein is useful as reference for DevOps Engineers willing to implement CI/CD using IAR Tools, IAR assumes no responsibility for any errors, omissions or particular implementations.
+>[!WARNING]
+>The information in this repository is subject to change without notice and does not constitute a commitment by IAR. While it serves as a valuable reference for DevOps Engineers implementing Continuous Integration with IAR Tools, IAR assumes no responsibility for any errors, omissions, or specific implementations.
 
 
 ## Introduction
@@ -52,30 +52,24 @@ With GitHub Actions is straightforward enabling a self-hosted runner on a Linux 
 
 You can have as many parallel build nodes with runners as your license allows you to. [Contact sales](https://iar.com/about/contact) for expanding your build capacity.
 
-### FAQ
-<details><summary><b>How do I make the runner to survive a reboot?</b></summary>
-In order to learn how to install the runner as a service, use this <a href=https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service?platform=linux>link</a>.
-</details>
+
+## Summary
+This tutorial provided an overview of how to get started with the IAR Build Tools for Arm on GitHub Actions using Linux runners. Development teams can immediately benefit from the comprehensive feedback these modern workflows offer, enabling them to quickly build, analyze, test, and deploy with high quality.
+
+[__` Follow us `__](https://github.com/iarsystems) on GitHub to get updates about tutorials like this and more.
 
 
 ## Issues
-Use the public issue tracker:
-- If you found an issue or have a suggestion **specifically related to this tutorial**, do not forget to take a look at [earlier issues][url-repo-issue-old].
-- If creating a [new][url-repo-issue-new] issue, please describe it in detail.
+For technical support contact [IAR Customer Support][url-iar-customer-support].
 
-Do not use the public issue tracker:
-- If you need technical support. The public issue tracker **is not a support forum**.
-- If you have license issues. Contact [IAR Customer Care](https://iar.com/knowledge/support/licensing-faq/).
-- If you have tools issues. Contact [IAR Tech Support](https://iar.com/knowledge/support/request-technical-support/).
+For questions or suggestions related to this tutorial: try the [wiki][url-repo-wiki] or check [earlier issues][url-repo-issue-old]. If those don't help, create a [new issue][url-repo-issue-new] with detailed information.
 
-## Summary
-This tutorial provided an overview on how to get started with the IAR Build Tools for Arm on GitHub Actions using Linux runners, from where development teams can immediately benefit from holistic feedbacks these modern workflows provide to quickly build, analyze, test and deploy with quality.
-
-[__` Follow us `__](https://github.com/iarsystems) on GitHub to get updates about tutorials like this and more.
 
 [^1]: From the default installation, the runners become available organization-wide, for all its repositories. These can be [grouped and managed](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/managing-access-to-self-hosted-runners-using-groups) as desired.
 
 <!-- links -->
+[url-iar-customer-support]: https://iar.my.site.com/mypages/s/contactsupport
+
 [iar-bxarm-url]: https://www.iar.com/bxarm
 
 [gh-yaml-doc-url]: https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions
