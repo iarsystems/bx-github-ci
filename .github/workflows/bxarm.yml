@@ -5,8 +5,8 @@ on: push
 
 # Workflow's environment variables can be referred by all jobs
 env:
-  TARGET_DIR: /opt/iarsystems/bxarm-9.50.1/arm/bin
-  COMMON_DIR: /opt/iarsystems/bxarm-9.50.1/common/bin
+  TARGET_DIR: /opt/iarsystems/bxarm-9.60.2/arm/bin
+  COMMON_DIR: /opt/iarsystems/bxarm-9.60.2/common/bin
 
 jobs:
   build-library:
