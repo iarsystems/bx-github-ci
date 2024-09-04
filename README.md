@@ -78,5 +78,6 @@ For questions or suggestions related to this tutorial: try the [wiki][url-repo-w
 [gh-iar-url]: https://github.com/IARSystems
 
 [url-repo]: https://github.com/IARSystems/bx-github-ci
+[url-repo-wiki]: https://github.com/IARSystems/bx-github-ci/wiki
 [url-repo-issue-new]: https://github.com/IARSystems/bx-github-ci/issues/new
 [url-repo-issue-old]: https://github.com/IARSystems/bx-github-ci/issues?q=is%3Aissue+is%3Aopen%7Cclosed
