@@ -54,7 +54,7 @@ You can have as many parallel build nodes with runners as your license allows yo
 
 
 ## Summary
-This tutorial provided an overview of how to get started with the IAR Build Tools for Arm on GitHub Actions using Linux runners. Development teams can immediately benefit from the comprehensive feedback these modern workflows offer, enabling them to quickly build, analyze, test, and deploy with high quality.
+This tutorial provided an overview of how to get started with the IAR Build Tools for Arm on GitHub Actions using self-hosted Linux runners. Development teams can immediately benefit from the comprehensive feedback these modern workflows offer, enabling them to quickly build, analyze, test, and deploy with high quality.
 
 [__` Follow us `__](https://github.com/iarsystems) on GitHub to get updates about tutorials like this and more.
 
