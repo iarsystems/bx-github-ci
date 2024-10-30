@@ -37,7 +37,7 @@ Once the importing process is complete, a message will show up `Your new reposit
 ## GitHub Actions pipeline example
 On your private repository, navigate to the [`.github/workflows/bxarm.yml`](.github/workflows/bxarm.yml) workflow file. This file uses the [GitHub-flavored YAML syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions) to describe a pipeline containing multiple jobs found in a typical embedded firmware project.
 
-![image](https://github.com/felipe-iar/bx-github-ci/assets/54443595/8431a79c-257d-4d14-89d8-18638e63e526)
+![image](https://github.com/user-attachments/assets/5aedcd2a-d16c-424e-b125-9131279a121c)
 
 Refer to the [`.github/workflows/bxarm.yml`](.github/workflows/bxarm.yml) workflow file for detailed comments.
 
