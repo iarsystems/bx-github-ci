@@ -15,8 +15,8 @@ In case you need an introduction on how to get started with GitHub, use [Quickst
 
 ## Prerequisites
 Before you begin, you will need to download and install the following:
-- IAR Build Tools for Arm 9.60.2 for Ubuntu 22.04 x64 ([`bxarm-9.60.2.deb`](https://updates.iar.com/?product=BXARM&version=9.60))
-   - IAR customers can download it directly from [IAR MyPages](https://iar.my.site.com/mypages). If you do not have a license, [contact sales](https://iar.com/about/contact).
+- IAR Build Tools for Arm V9.60.3 for Ubuntu 22.04 x64 ([`bxarm-9.60.2.deb`](https://updates.iar.com/?product=BXARM&version=9.60))
+   - IAR customers can download it directly from [IAR MyPages](https://iar.my.site.com/mypages). If you do not have a license, [contact IAR Sales](https://iar.com/about/contact).
 
 You also will need:
 - A GitHub [organization account](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#organization-accounts)
