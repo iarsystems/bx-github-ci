@@ -5,11 +5,12 @@ on: push
 
 # Workflow's environment variables can be referred by all jobs
 env:
-  TARGET_DIR: /opt/iarsystems/bxarm-9.60.2/arm/bin
-  COMMON_DIR: /opt/iarsystems/bxarm-9.60.2/common/bin
+  TARGET_DIR: /opt/iarsystems/bxarm-9.60.3/arm/bin
+  COMMON_DIR: /opt/iarsystems/bxarm-9.60.3/common/bin
 
 jobs:
   build-library:
+    name: Build library
     runs-on: [ self-hosted, linux ]
     steps:
       - uses: actions/checkout@v4
@@ -23,13 +24,14 @@ jobs:
              $COMMON_DIR/iarbuild project/EWARM/ChecksumLibrary.ewp -make Debug -log all
 
       - name: Upload library
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: library
           path: project/EWARM/Debug/Exe/ChecksumLibrary.a
           if-no-files-found: error
           
   cstat-library:
+    name: Analyze library
     runs-on: [ self-hosted, linux ]
     steps:
       - uses: actions/checkout@v4
@@ -40,19 +42,20 @@ jobs:
              $COMMON_DIR/iarbuild project/EWARM/ChecksumLibrary.ewp -cstat_report Debug -log all
 
       - name: Upload library report (C-STAT)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: library-report.html
           path: project/EWARM/Debug/C-STAT/*.html
           if-no-files-found: error
 
   build-project:
+    name: Build project
     needs: build-library
     runs-on: [ self-hosted, linux ]
     steps:
       - uses: actions/checkout@v4
       - name: Download library
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: library
           path: project/EWARM/Debug/Exe/
@@ -62,7 +65,7 @@ jobs:
              $COMMON_DIR/iarbuild project/EWARM/project.ewp -make Debug -log all
 
       - name: Upload project
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: project
           path: project/EWARM/Debug/Exe/project.out
@@ -70,6 +73,7 @@ jobs:
 
 # Comment out the `cstat-project` job if your license has no IAR C-STAT for static code analysis
   cstat-project:
+    name: C-STAT Project
     needs: build-project
     runs-on: [ self-hosted, linux ]
     steps:
@@ -80,7 +84,7 @@ jobs:
              $COMMON_DIR/iarbuild project/EWARM/project.ewp -cstat_report Debug -log all
 
       - name: Upload project report (C-STAT)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: project-cstat.html
           path: project/EWARM/project/C-STAT/*.html
@@ -88,11 +92,12 @@ jobs:
 
 # Comment out the `crun-project` job if your license has no IAR C-RUN for runtime analysis
   crun-project:
+    name: C-RUN Project (Sim)
     needs: build-project
     runs-on: [ self-hosted, linux ]
     steps:
       - name: Download project
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: project
           path: project/EWARM/Debug/Exe/
@@ -114,7 +119,7 @@ jobs:
                --semihosting || true
 
       - name: Upload project report (C-RUN)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: project-crun.txt
           path: ./crun-messages.txt
@@ -122,11 +127,12 @@ jobs:
 
 # Update `needs` to `build-project` if you do not have C-STAT and/or C-RUN enabled for your license
   cspy-project-on-hw:
+    name: C-RUN Project (HW)
     needs: [ cstat-project, crun-project ]
     runs-on: [ self-hosted, linux ]
     steps:
       - name: Download project
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: project
           path: project/EWARM/Debug/Exe/
@@ -137,37 +143,21 @@ jobs:
                $TARGET_DIR/libarmPROC.so \
                $TARGET_DIR/libarmJET.so \
                --plugin=$TARGET_DIR/libarmLibsupportUniversal.so \
-               --device_macro=$TARGET_DIR/../config/debugger/ST/STM32F4xx.dmac \
                --flash_loader=$TARGET_DIR/../config/flashloader/ST/FlashSTM32F4xxx.board \
                --debug_file=project/EWARM/Debug/Exe/project.out \
                --timeout=2000000 \
                --backend \
-               --board_file=$TARGET_DIR/../config/flashloader/ST/FlashSTM32F4xxx.board \
-               --endian=little \
-               --cpu=cortex-m4 \
-               --fpu=vfpv4_sp \
-               -p $TARGET_DIR/../config/debugger/ST/STM32F407VG.ddf \
-               --semihosting \
-               --device=STM32F407VG \
-               --multicore_nr_of_cores=1 \
-               --jet_standard_reset=9,0,0 \
-               --reset_style=\"0,-,0,Disabled__no_reset_\" \
-               --reset_style=\"1,-,0,Software\" \
-               --reset_style=\"2,-,0,Hardware\" \
-               --reset_style=\"3,-,0,Core\" \
-               --reset_style=\"4,-,0,System\" \
-               --reset_style=\"9,ConnectUnderReset,1,Connect_during_reset\" \
-               --jet_power_from_probe=switch_off \
-               --drv_communication_log=cspycomm.log \
-               --drv_interface=SWD \
-               --jet_swo_protocol=Manchester \
-               --jet_cpu_clock=72000000 \
-               --jet_swo_prescaler=1 \
-               --drv_catch_exceptions=0xff0 \
-               --drv_trace_settings=None
+                 --cpu=cortex-m4 \
+                 --fpu=vfpv4_sp \
+                 -p $TARGET_DIR/../config/debugger/ST/STM32F407VG.ddf \
+                 --semihosting \
+                 --device=STM32F407VG \
+                 --jet_power_from_probe=switch_off \
+                 --drv_communication_log=cspycomm.log \
+                 --drv_interface=SWD
                
       - name: Upload C-SPY log
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cspycomm.log
           path: ./cspycomm.log
@@ -175,11 +165,12 @@ jobs:
 
 # Update `needs` to `build-project` if you do not have C-STAT and/or C-RUN enabled for your license          
   deploy:
+    name: Deploy firmware
     needs: cspy-project-on-hw
     runs-on: [ self-hosted, linux ]
     steps:
       - name: Download ELF
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: project
           path: ./
@@ -194,7 +185,7 @@ jobs:
              $TARGET_DIR/ielftool --ihex --verbose project.out output/project.hex
 
       - name: Upload firmwares
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: firmwares-srec-hex
           path: ./output/*.*
